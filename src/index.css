@@ -1,0 +1,97 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Plus Jakarta Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* brand — lifted from the logo (#46BEFD) */
+  --color-brand-400: #7cd4ff;
+  --color-brand-500: #46befd;
+  --color-brand-600: #0e85cf;
+
+  /* ambient background accent */
+  --color-glow-violet: #8b5cf6;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-zinc-950 text-zinc-100 antialiased;
+  font-feature-settings: "cv02", "cv03", "cv11";
+}
+
+::selection {
+  @apply bg-brand-400/30 text-inherit;
+}
+
+/* hairline focus rings for keyboard users */
+:focus-visible {
+  @apply outline-2 outline-offset-2 outline-brand-400;
+}
+
+/* kinetic marquee */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.animate-marquee {
+  animation: marquee 36s linear infinite;
+}
+.marquee-fast {
+  animation-duration: 22s;
+}
+
+/* ── custom cursor ─────────────────────────────────────────────── */
+
+/* only when JS confirms a fine pointer + no reduced-motion */
+html.custom-cursor,
+html.custom-cursor * {
+  cursor: none !important;
+}
+
+.cursor-layer {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  transition: opacity 0.15s ease;
+}
+
+/* 8px brand dot in two layers. The outer `.cursor-dot` only translates —
+   JS positions it via inline transform, instant, no transition. The inner
+   `.cursor-dot-inner` only scales (inline `transform: scale(s)`, transitioned),
+   so the squash never disturbs the position: scale() inside a transform
+   applies in local space about the dot's center, which sits on the pointer.
+   (The individual CSS `scale` property would compose OUTSIDE `transform` and
+   drag the dot toward the viewport origin — don't use it here.) */
+.cursor-dot {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 8px;
+  transform: translate3d(-100px, -100px, 0);
+  will-change: transform;
+}
+
+.cursor-dot-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: color-mix(in srgb, var(--color-brand-500) 55%, transparent);
+  transform: scale(1);
+  transition: transform 0.15s ease;
+  will-change: transform;
+}
+
+/* tab hidden → freeze everything */
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}

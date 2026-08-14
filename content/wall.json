@@ -1,0 +1,96 @@
+{
+  "title": "the wall",
+  "subtitle": "pinned by hand — the other side of the rakai",
+  "seed": "rakai-wall-v1",
+  "items": [
+    {
+      "slotId": "m1",
+      "title": "Dawn FM",
+      "note": "personal favorite, 80s vibe",
+      "image": "https://cdn-images.dzcdn.net/images/cover/478a544d29275755b3b8f7b4a1fd7a3c/1900x1900-000000-80-0-0.jpg",
+      "href": "https://open.spotify.com/album/4yP0hdKOZPNshxUOjY0cZj"
+    },
+    {
+      "slotId": "m2",
+      "title": "Hurry Up Tommorow",
+      "note": "graduated from the purgatory",
+      "image": "https://upload.wikimedia.org/wikipedia/en/thumb/f/f0/The_Weeknd_-_Hurry_Up_Tomorrow.png/250px-The_Weeknd_-_Hurry_Up_Tomorrow.png?utm_source=en.wikipedia.org&utm_campaign=parser&utm_content=thumbnail",
+      "href": "https://open.spotify.com/album/3OxfaVgvTxUTy7276t7SPU?si=f5890fd765ae443d"
+    },
+    {
+      "slotId": "m3",
+      "title": "Kendrick Lamar - Mr. Morale & The Big Steppers",
+      "note": "Lyrical master",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2qP17t89z9AjmbQKn6XZDEe0PwOEoI37QSHqvl95RRX4RR_eoLyi379e4&s=10",
+      "href": "https://open.spotify.com/artist/2YZyLoL8N0Wb9xBt1NhZWg"
+    },
+    {
+      "slotId": "m4",
+      "title": "After Hours",
+      "note": "Welcome to hell",
+      "image": "https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36",
+      "href": "https://open.spotify.com/album/2ODvWsOgouMbaA5xf0jHf"
+    },
+    {
+      "slotId": "s1",
+      "title": "Pedro Porro",
+      "note": "Best RB in Tottenham history",
+      "image": "/images/wall/jersey-porro.png",
+      "href": "https://www.tottenhamhotspur.com/player/441164/pedro-porro"
+    },
+    {
+      "slotId": "s2",
+      "title": "James Harden",
+      "note": "Bending the rules and physics to his will",
+      "image": "/images/wall/jersey-harden.png",
+      "href": "https://www.nba.com/player/201935/james-harden"
+    },
+    {
+      "slotId": "s3",
+      "title": "Timnas Garuda",
+      "note": "King of ASEAN",
+      "image": "/images/wall/jersey-timnas.png",
+      "href": "https://www.transfermarkt.com/indonesia/startseite/verein/13958"
+    },
+    {
+      "slotId": "s4",
+      "title": "Tottenham Hotspur",
+      "note": "Audere est Facere",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ9BQ58SmVm1S9fbMdzPadESdJMEaZFkJ9799d3j5b3HUKNac4SMkbVUf85&s=10",
+      "href": "https://www.tottenhamhotspur.com/"
+    },
+    {
+      "slotId": "s5",
+      "title": "Max Verstappen",
+      "note": "The flying dutchman",
+      "image": "/images/wall/verstappen.png",
+      "href": "https://www.verstappen.com/"
+    },
+    {
+      "slotId": "t1",
+      "title": "Borobudur",
+      "note": "broad view, legacy of the past",
+      "image": "/images/wall/borobudur.jpg"
+    },
+    {
+      "slotId": "t2",
+      "title": "Coban Talun",
+      "note": "making the most of the present",
+      "image": "/images/wall/coban.jpg"
+    },
+    {
+      "slotId": "g1",
+      "title": "NBA 2K26",
+      "note": "Legendary game to play against my friend",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcU_dxRT_cKojXkor1O-Z0dD12gLtmFNmSADw2E5zlHg&s=10",
+      "href": "https://store.steampowered.com/app/3472040/NBA_2K26/"
+    },
+        {
+      "slotId": "g2",
+      "title": "FC 26",
+      "note": "a hundred hours of football, still managed to randomly lose against a bottom table side",
+      "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFl83vTRWAP-Qzvj00eRWU8Dm_D0kjVqgxtIPDfj4l4w&s=10",
+      "href": "https://store.steampowered.com/app/3405690/EA_SPORTS_FC_26/"
+    }
+  ]
+}

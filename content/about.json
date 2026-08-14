@@ -1,0 +1,80 @@
+{
+  "current": [
+    {
+      "role": "Fullstack Developer Intern",
+      "company": "PT Intelix Global Crossing",
+      "period": "Jul 2026 – now",
+      "line": "-"
+    }
+  ],
+  "timeline": [
+    {
+      "period": "Jan – Jun 2026",
+      "role": "Fullstack Developer Intern",
+      "company": "PT Surabaya Autocomp Indonesia",
+      "line": "Web apps for the Safety, Health & Environment team of a factory in Mojokerto."
+    },
+    {
+      "period": "Sep 2025 – Jan 2026",
+      "role": "Backend Developer",
+      "company": "Sekawan Media",
+      "line": "HaloGigi — dental self-screening and telemedicine platform. Laravel + MySQL APIs feeding the mobile clients."
+    },
+    {
+      "period": "Sep 2024 – Sep 2025",
+      "company": "Stealth startup (undisclosed)",
+      "role": "Co-Founder / Backend Developer",
+      "line": "Confidential telecom SaaS used by a major Indonesian ride-hailing company. Go microservices, PostgreSQL, RabbitMQ, Redis, Docker CI/CD."
+    },
+    {
+      "period": "Mar 2024 – Sep 2024",
+      "company": "Ardora Cipta Kreasi Teknologi",
+      "role": "Fullstack Developer",
+      "line": "Docker-first deploys, Go backend (RAM usage down 50%+), Laravel client & admin apps, vendor integrations."
+    },
+    {
+      "period": "Jan 2023 – Mar 2024",
+      "company": "Artamaya Makmur Abadi",
+      "role": "Fullstack Developer",
+      "line": "The POS that became Moneta — Laravel cashier dashboard, Go + gRPC backend, five servers kept alive."
+    },
+    {
+      "period": "May 2022 – Oct 2022",
+      "company": "PT Pintar Cari Usaha",
+      "role": "Software Developer Intern",
+      "line": "Backend troubleshooting and optimization."
+    }
+  ],
+  "education": {
+    "school": "State Polytechnic of Malang",
+    "field": "Informatics Engineering",
+    "period": "Sep 2023 – now",
+    "gpa": "3.79"
+  },
+  "other": [
+    {
+      "period": "Jan 2025 – Jan 2026",
+      "org": "Workshop Riset Informatika",
+      "role": "Lead Public Relation",
+      "line": "Craft announcement messaging for WRI's affairs, lead and train junior PR staff, build partnerships with stakeholders."
+    },
+    {
+      "period": "Oct 2023 – Jan 2025",
+      "org": "Workshop Riset Informatika",
+      "role": "Miniclass Mentor — Web (Frontend & Backend)",
+      "line": "Taught HTML, CSS, JS, and backend concepts to new students; served on WRI event committees."
+    },
+    {
+      "period": "Sep 2023 – now",
+      "org": "Information Technology Department Student Association",
+      "role": "President of 2023 Class",
+      "line": "Coordinate students for department activities and events."
+    },
+    {
+      "period": "Nov 2021 – Mar 2022",
+      "org": "Youngster Peace Indonesia",
+      "role": "Web Developer Volunteer",
+      "line": "Assisting in creating and maintaining the organization's website."
+    }
+  ]
+}
