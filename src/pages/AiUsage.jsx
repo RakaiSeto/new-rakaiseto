@@ -2,6 +2,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import BreathingDot from '../components/BreathingDot.jsx'
 import { MaskWords, Reveal } from '../components/Motion.jsx'
+import { EASE } from '../lib/motion.js'
 import { usePageMeta } from '../lib/seo.js'
 import {
   fetchTokscaleSnapshot,
@@ -11,7 +12,6 @@ import {
 } from '../lib/feeds.js'
 
 const SORTS = ['tokens', 'cost']
-const EASE = [0.16, 1, 0.3, 1]
 
 function Stat({ label, value, hint }) {
   return (

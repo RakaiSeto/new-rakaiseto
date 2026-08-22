@@ -1,6 +1,5 @@
 import { motion } from 'framer-motion'
-
-const EASE = [0.16, 1, 0.3, 1]
+import { EASE } from '../lib/motion.js'
 
 export function Reveal({ children, delay = 0, y = 28, className = '', layout = false }) {
   return (
