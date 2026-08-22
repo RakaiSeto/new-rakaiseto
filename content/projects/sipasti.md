@@ -1,11 +1,12 @@
 ---
 title: SIPASTI
 order: 1
+year: 2025
+category: school
 summary: "Information system for reporting and repairing campus infrastructure — Laravel, four user roles, a decision-support engine, and an IP registration."
 role: "Fullstack Developer"
 stack: [Laravel, MySQL, SAW, MOORA]
 image: "/images/projects/sipasti/home.png"
-status: "Live demo · IP registered"
 demo: "https://sipasti.rakaiseto.com/"
 repo: "https://github.com/rakaiseto/PBL-SIPASTI"
 ---

@@ -1,11 +1,12 @@
 ---
 title: Mekaniko+
 order: 2
+year: 2024
+category: work
 summary: "B2B e-commerce for construction material suppliers — Go + gRPC backend, Laravel frontend. The investor bailed halfway through development; the architecture lessons survived."
 role: "Backend + Frontend"
 stack: [Go, gRPC, Laravel, Redis]
 image: "/images/projects/mekaniko/mekaniko.png"
-status: "Investor bailed"
 ---
 
 ## The short version

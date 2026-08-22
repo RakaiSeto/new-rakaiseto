@@ -1,11 +1,12 @@
 ---
 title: Panjang
 order: 4
+year: 2025
+category: personal
 summary: "The opposite of a link shortener. It makes your links longer. That's the whole thing."
 role: "Solo"
 stack: [Vue, Node.js]
 image: "/images/projects/panjang/panjang.png"
-status: "Live, being silly"
 demo: "https://panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang.rakaiseto.com/"
 repo: "https://github.com/RakaiSeto/panjaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaang"
 ---
