@@ -1,13 +1,11 @@
 {
-  "current": [
+  "experience": [
     {
+      "period": "Jul 2026 – now",
       "role": "Fullstack Developer Intern",
       "company": "PT Intelix Global Crossing",
-      "period": "Jul 2026 – now",
-      "line": "-"
-    }
-  ],
-  "timeline": [
+      "current": true
+    },
     {
       "period": "Jan – Jun 2026",
       "role": "Fullstack Developer Intern",
