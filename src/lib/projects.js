@@ -8,6 +8,10 @@ const files = import.meta.glob('../../content/projects/*.md', {
   eager: true,
 })
 
+// Group by category (work/personal before school), then by order. The
+// school appendix lands at the bottom on every page that lists projects.
+const GROUP_ORDER = { work: 0, personal: 0, school: 1 }
+
 export const projects = Object.entries(files)
   .map(([path, source]) => {
     const { data, content } = parseFrontmatter(source)
@@ -17,7 +21,11 @@ export const projects = Object.entries(files)
       body: content,
     }
   })
-  .sort((a, b) => a.order - b.order)
+  .sort(
+    (a, b) =>
+      (GROUP_ORDER[a.category] ?? 0) - (GROUP_ORDER[b.category] ?? 0) ||
+      a.order - b.order
+  )
 
 export function getProject(slug) {
   return projects.find((p) => p.slug === slug)
