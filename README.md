@@ -16,7 +16,7 @@ Personal portfolio for Rakai Seto Sembodo. React SPA (Vite + React Router), no b
 All content is markdown with frontmatter:
 
 - `content/projects/*.md` — one file per case study. Frontmatter (`title`, `order`, `summary`, `role`, `stack`, `image`, `status`, `demo`, `repo`, `mock`) drives the UI; the body is rendered with react-markdown.
-- `content/about.json` — the "now" strip: current roles, employer timeline, education. Edit the JSON, the section updates.
+- `content/about.json` — the "now" strip: current roles, employer timeline, education. Edit the JSON, the section updates. Timeline and "other experiences" entries sharing the same `company`/`org` render as one grouped block (name on top, one row per position) — just add a second entry with the same company name.
 - Add a project: drop a new `.md` file in, set `order`. It appears on the home page (if `order <= 3`), the index, and gets its own `/projects/:slug` page automatically.
 - `mock: true` renders the CSS-drawn POS interface instead of a screenshot (used for Moneta POS, whose production screenshots are under NDA).
 
