@@ -1,108 +1,57 @@
-import { useRef } from 'react'
 import { Link } from 'react-router-dom'
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { ArrowRight } from '@phosphor-icons/react'
-import PosMock from './PosMock.jsx'
+import { ArrowUpRight } from '@phosphor-icons/react'
 import { Reveal } from './Motion.jsx'
 
-// Parallax tilt card: springs + transforms only, no re-renders during hover.
-function TiltImage({ src, alt }) {
-  const ref = useRef(null)
-  const px = useMotionValue(0.5)
-  const py = useMotionValue(0.5)
-  const rX = useSpring(useTransform(py, [0, 1], [5, -5]), {
-    stiffness: 120,
-    damping: 18,
-  })
-  const rY = useSpring(useTransform(px, [0, 1], [-5, 5]), {
-    stiffness: 120,
-    damping: 18,
-  })
-
-  return (
-    <motion.div
-      ref={ref}
-      style={{ rotateX: rX, rotateY: rY, transformPerspective: 1100 }}
-      onMouseMove={(e) => {
-        const r = ref.current.getBoundingClientRect()
-        px.set((e.clientX - r.left) / r.width)
-        py.set((e.clientY - r.top) / r.height)
-      }}
-      onMouseLeave={() => {
-        px.set(0.5)
-        py.set(0.5)
-      }}
-      className="group relative overflow-hidden rounded-xl border border-white/10 bg-zinc-900"
-    >
-      <img
-        src={src}
-        alt={alt}
-        loading="lazy"
-        decoding="async"
-        className="aspect-[16/9] w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-      />
-      <div className="pointer-events-none absolute inset-0 rounded-xl ring-1 ring-inset ring-white/10" />
-    </motion.div>
-  )
-}
-
+// Compact editorial index row: one line on md+ (index · title · summary ·
+// year · stack), stacked on mobile. No containers, no decorations.
 export default function ProjectRow({ project, index }) {
-  const flip = index % 2 === 1
   const number = String(index + 1).padStart(2, '0')
 
   return (
-    <Reveal className="grid items-center gap-8 md:grid-cols-12 md:gap-12">
-      <div className={`md:col-span-5 ${flip ? 'md:order-2' : ''}`}>
-        <div className="mb-4 flex items-center gap-3 font-mono text-xs tracking-[0.2em] text-zinc-600">
-          <span className="text-brand-400">{number}</span>
-          <span className="h-px w-8 bg-white/15" />
-          <span>{project.status ?? 'case study'}</span>
-        </div>
-
-        <h3 className="text-3xl font-semibold tracking-tight md:text-4xl">
-          <Link
-            to={`/projects/${project.slug}`}
-            className="transition-colors hover:text-brand-500"
-          >
-            {project.title}
-          </Link>
-        </h3>
-
-        <p className="mt-4 max-w-[52ch] leading-relaxed text-zinc-400">
-          {project.summary}
-        </p>
-
-        <div className="mt-5 flex flex-wrap gap-2">
-          {project.stack.map((s) => (
-            <span
-              key={s}
-              className="rounded-full border px-3 py-1 font-mono text-[11px] border-white/10 text-zinc-400"
-            >
-              {s}
+    <Reveal>
+      <Link
+        to={`/projects/${project.slug}`}
+        className="group block border-b border-white/10 py-5 transition-colors duration-300 hover:border-brand-500/40 md:py-6"
+      >
+        <div className="flex flex-col gap-3 md:grid md:grid-cols-12 md:items-baseline md:gap-x-6">
+          {/* index + title — contents wrapper dissolves into the grid on md */}
+          <div className="flex items-baseline gap-4 md:contents">
+            <span className="font-mono text-xs tracking-[0.2em] text-zinc-600 transition-colors duration-300 group-hover:text-brand-400 md:col-span-1">
+              {number}
             </span>
-          ))}
+            <h3 className="text-2xl font-semibold tracking-tight transition-all duration-300 ease-out group-hover:translate-x-2 group-hover:text-brand-400 md:col-span-3 md:text-3xl">
+              {project.title}
+            </h3>
+          </div>
+
+          {/* summary — middle, ellipsized when long */}
+          <p className="line-clamp-1 text-sm leading-relaxed text-zinc-400 md:col-span-3">
+            {project.summary}
+          </p>
+
+          {/* stack + year — end */}
+          <div className="flex flex-wrap items-baseline gap-2 md:col-span-4 md:justify-end">
+            {project.stack.map((s) => (
+              <span
+                key={s}
+                className="rounded-full border px-2.5 py-0.5 font-mono text-[10px] border-white/10 text-zinc-400"
+              >
+                {s}
+              </span>
+            ))}
+            <span className="font-mono text-xs tracking-[0.15em] text-brand-400">
+              {project.year}
+            </span>
+          </div>
+
+          <div className="flex justify-end md:col-span-1">
+            <ArrowUpRight
+              size={16}
+              className="text-zinc-600 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-brand-400"
+            />
+          </div>
         </div>
-
-        <Link
-          to={`/projects/${project.slug}`}
-          className="group/link mt-7 inline-flex items-center gap-2 font-mono text-sm transition-colors hover:text-brand-500 text-brand-400"
-        >
-          read case study
-          <ArrowRight
-            size={15}
-            weight="bold"
-            className="transition-transform duration-300 group-hover/link:translate-x-1"
-          />
-        </Link>
-      </div>
-
-      <div className={`md:col-span-7 ${flip ? 'md:order-1' : ''}`}>
-        {project.image ? (
-          <TiltImage src={project.image} alt={`${project.title} screenshot`} />
-        ) : (
-          <PosMock />
-        )}
-      </div>
+      </Link>
     </Reveal>
   )
 }

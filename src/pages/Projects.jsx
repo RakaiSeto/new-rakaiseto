@@ -4,8 +4,53 @@ import { Reveal } from '../components/Motion.jsx'
 import { projects } from '../lib/projects.js'
 import { usePageMeta } from '../lib/seo.js'
 
+// Cell anatomy shared by both sections: title · one-line summary · year +
+// stack. Hairline divider, no box, no index number.
+function ProjectCell({ project }) {
+  return (
+    <Link
+      to={`/projects/${project.slug}`}
+      className="group block border-t border-white/10 py-4 transition-colors duration-300 hover:border-brand-500/40 md:py-5"
+    >
+      <div className="flex items-baseline justify-between gap-4">
+        <h3 className="text-xl font-semibold tracking-tight transition-all duration-300 ease-out group-hover:translate-x-1.5 group-hover:text-brand-400 md:text-2xl">
+          {project.title}
+        </h3>
+        <ArrowUpRight
+          size={16}
+          className="shrink-0 text-zinc-600 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-brand-400"
+        />
+      </div>
+
+      <p className="mt-2 line-clamp-1 text-sm leading-relaxed text-zinc-400">
+        {project.summary}
+      </p>
+
+      <div className="mt-2 flex flex-wrap items-center gap-2">
+        <span className="font-mono text-xs tracking-[0.15em] text-brand-400">
+          {project.year}
+        </span>
+        <span className="h-3 w-px bg-white/15" aria-hidden />
+        {project.stack.map((s) => (
+          <span
+            key={s}
+            className="rounded-full border px-2.5 py-0.5 font-mono text-[10px] border-white/10 text-zinc-400"
+          >
+            {s}
+          </span>
+        ))}
+      </div>
+    </Link>
+  )
+}
+
+// Plain symmetric 2-column grid for both groups — no stagger, no numbers.
+// School assignments sit in their own labeled grid at the bottom.
 export default function Projects() {
   usePageMeta('Projects — Rakai Seto Sembodo')
+
+  const main = projects.filter((p) => p.category !== 'school')
+  const school = projects.filter((p) => p.category === 'school')
 
   return (
     <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
@@ -17,47 +62,35 @@ export default function Projects() {
           Every project, told straight.
         </h1>
         <p className="mt-4 max-w-[52ch] leading-relaxed text-zinc-400">
-          The shipped, the ghosted, and the ones an investor bailed on. No
+          The shipped, the shelved, and everything in between. No
           highlight reel — each chapter gets the same honesty as the last.
         </p>
       </Reveal>
 
-      <div className="border-t border-white/10">
-        {projects.map((project, i) => (
+      <div className="grid grid-cols-1 gap-x-12 md:grid-cols-2">
+        {main.map((project, i) => (
           <Reveal key={project.slug} delay={i * 0.05}>
-            <Link
-              to={`/projects/${project.slug}`}
-              className="group grid grid-cols-12 items-baseline gap-4 border-b py-8 transition-colors hover:border-brand-500/40 md:py-10 border-white/10"
-            >
-              <span className="col-span-2 font-mono text-xs tracking-[0.2em] md:col-span-1 text-zinc-600">
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span className="col-span-10 text-2xl font-semibold tracking-tight transition-all duration-300 group-hover:translate-x-2 group-hover:text-brand-500 md:col-span-5 md:text-4xl">
-                {project.title}
-              </span>
-              <span className="col-span-10 col-start-3 text-sm leading-relaxed md:col-span-4 md:col-start-auto text-zinc-400">
-                {project.summary}
-              </span>
-              <span className="col-span-10 col-start-3 flex items-center justify-between gap-3 md:col-span-2 md:col-start-auto md:flex-col md:items-end md:gap-2">
-                <span className="flex flex-wrap gap-1.5">
-                  {project.stack.slice(0, 3).map((s) => (
-                    <span
-                      key={s}
-                      className="rounded-full border px-2 py-0.5 font-mono text-[10px] border-white/10 text-zinc-400"
-                    >
-                      {s}
-                    </span>
-                  ))}
-                </span>
-                <ArrowUpRight
-                  size={18}
-                  className="transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-brand-500 text-zinc-600"
-                />
-              </span>
-            </Link>
+            <ProjectCell project={project} />
           </Reveal>
         ))}
       </div>
+
+      {school.length > 0 && (
+        <div className="mt-16 md:mt-20">
+          <Reveal className="border-t border-white/10 pt-8">
+            <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+              school assignments
+            </p>
+          </Reveal>
+          <div className="grid grid-cols-1 gap-x-12 md:grid-cols-2">
+            {school.map((project, i) => (
+              <Reveal key={project.slug} delay={i * 0.05}>
+                <ProjectCell project={project} />
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      )}
     </section>
   )
 }

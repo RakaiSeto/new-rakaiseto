@@ -4,7 +4,6 @@ import { ArrowDown, ArrowUpRight, FileText } from '@phosphor-icons/react';
 import BreathingDot from '../components/BreathingDot.jsx';
 import Marquee from '../components/Marquee.jsx';
 import ProjectRow from '../components/ProjectRow.jsx';
-import PanjangStrip from '../components/PanjangStrip.jsx';
 import Contact from '../components/Contact.jsx';
 import About from '../components/About.jsx';
 import Magnetic from '../components/Magnetic.jsx';
@@ -26,7 +25,8 @@ export default function Home() {
         'Fullstack developer in Jakarta. Backend-heavy systems in Go, Laravel, and React that survive production.',
     );
 
-    const featured = projects.filter((p) => p.slug === 'monetapos');
+    // All four chapters render as editorial index rows — Panjang keeps its
+    // personality as the final row instead of a special-case strip.
 
     return (
         <>
@@ -90,7 +90,7 @@ export default function Home() {
                         </div>
 
                         <p className="border-t border-white/10 py-4 font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-600">
-                            3+ years fullstack
+                            3+ years of experiences
                         </p>
                     </div>
 
@@ -139,28 +139,72 @@ export default function Home() {
                     transition={{ duration: 0.25, ease: 'easeOut' }}
                     className="order-1 md:order-2 flex justify-center md:col-span-5 md:justify-end"
                 >
-                    <figure className="relative w-full rounded-2xl border border-white/10 bg-zinc-950 @container md:max-w-[min(26rem,calc((100dvh-9.5rem)*0.6))]">
-                        {/* Composition locked to card width via cqw: the seam always
-                            crosses the image at ~52% (hip line), feet dangle a fixed
-                            fraction below the card, on every device. */}
-                        <div className="h-[46.2cqw] w-full" aria-hidden />
-                        <img
-                            src="/images/hero.png"
-                            alt="Rakai Seto Sembodo"
-                            className="absolute inset-0 z-10 h-auto w-full select-none -translate-y-[30.8cqw] translate-x-[11.5cqw]"
-                        />
-                        <figcaption className="relative z-0 border-t border-white/10 px-[3.8cqw] pb-[3.8cqw] pt-[30.8cqw]">
-                            <p className="text-[3.4cqw] font-semibold leading-[1.43] text-zinc-100">Rakai Seto Sembodo</p>
-                            <p className="mt-[0.5cqw] font-mono text-[2.6cqw] uppercase leading-[1.5] tracking-[0.15em] text-zinc-400">
-                                backend-leaning fullstack developer
-                            </p>
-                            <p className="mt-[2.4cqw] flex items-center gap-[1.9cqw] font-mono text-[2.6cqw] leading-[1.5] tracking-[0.15em] text-brand-400">
-                                <BreathingDot className="bg-brand-500" />
-                                open to work
-                            </p>
-                            <p className="mt-[1.4cqw] font-mono text-[2.6cqw] leading-[1.5] tracking-[0.15em] text-zinc-500">
-                                jakarta &amp; malang, id · utc+7
-                            </p>
+                    <figure className="relative w-full rounded-2xl border border-white/10 bg-zinc-950 md:max-w-[28rem]">
+                        {/* photo plate — the full-body shot is taller than the card:
+                            hair pokes over the top edge, feet dangle below the bottom.
+                            The image is anchored so its hips (54.7% down) sit exactly
+                            on the seam; the thighs run behind the opaque panel. */}
+                        <div className="relative aspect-[7/5]">
+                            <img
+                                src="/images/hero.png"
+                                alt="Rakai Seto Sembodo"
+                                className="absolute inset-x-0 top-0 h-auto w-full select-none -translate-y-[7.1%]"
+                            />
+
+                            {/* spine — fills the dead left flank, editorial index */}
+                            <span
+                                aria-hidden="true"
+                                className="absolute left-3.5 top-1/2 hidden -translate-y-1/2 rotate-180 select-none whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.4em] text-zinc-600 [writing-mode:vertical-rl] md:block"
+                            >
+                                rakaiseto — fullstack developer
+                            </span>
+                        </div>
+
+                        {/* info panel — image now renders OVER this layer (legs cross
+                            the text); identity block left, meta right; no cards */}
+                        <figcaption className="rounded-b-2xl border-t border-white/10 bg-zinc-950 px-5 pb-4 pt-4">
+                            <div className="flex items-end justify-between gap-4">
+                                <div>
+                                    <p className="text-lg font-semibold leading-tight tracking-tight text-zinc-100 md:text-xl">
+                                        Rakai Seto Sembodo
+                                    </p>
+                                    <p className="mt-1 text-sm leading-relaxed text-zinc-400">
+                                        backend-leaning fullstack developer
+                                    </p>
+                                </div>
+                                <div className="text-right">
+                                    <p className="flex items-center justify-end gap-2 font-mono text-xs tracking-[0.1em] text-brand-400">
+                                        <BreathingDot className="bg-brand-500" />
+                                        open to work
+                                    </p>
+                                    <p className="mt-2 font-mono text-xs tracking-[0.1em] text-zinc-500">
+                                        jakarta &amp; malang, id
+                                    </p>
+                                    <p className="font-mono text-xs tracking-[0.1em] text-zinc-500">
+                                        utc+7
+                                    </p>
+                                </div>
+                            </div>
+
+                            {/* CTA footer row */}
+                            <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-3">
+                                <a
+                                    href="/CV_RAKAI.pdf"
+                                    className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-400 transition-colors hover:text-brand-400"
+                                >
+                                    <FileText size={13} />
+                                    download cv
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/in/rakaiseto"
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-400 transition-colors hover:text-brand-400"
+                                >
+                                    linkedin
+                                    <ArrowUpRight size={13} weight="bold" />
+                                </a>
+                            </div>
                         </figcaption>
                     </figure>
                 </motion.div>
@@ -188,49 +232,11 @@ export default function Home() {
                     </Link>
                 </Reveal>
 
-                <div className="space-y-24 md:space-y-32">
-                    {featured.map((project, i) => (
+                <div className="border-t border-white/10">
+                    {projects.map((project, i) => (
                         <ProjectRow key={project.slug} project={project} index={i} />
                     ))}
-                    <PanjangStrip />
                 </div>
-
-                {/* CURRENTLY WRITING — the present tense */}
-                <Reveal className="mt-24 border-t pt-10 md:mt-32 border-white/10">
-                    <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
-                        <div className="flex items-start gap-4">
-                            <motion.span
-                                animate={{ opacity: [1, 0.35, 1] }}
-                                transition={{ duration: 2.4, repeat: Infinity, ease: 'easeInOut' }}
-                                className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-500"
-                                aria-hidden
-                            />
-                            <div>
-                                <p className="font-mono text-[11px] uppercase tracking-[0.25em] text-zinc-500">
-                                    currently writing
-                                </p>
-                                <h3 className="mt-2 text-2xl font-semibold tracking-tight md:text-3xl">
-                                    Chapter 3: something new, with a friend.
-                                </h3>
-                                <p className="mt-2 max-w-[52ch] leading-relaxed text-zinc-400">
-                                    Can't tell you what it is yet — but it's the reason this biography has a future tense. Details
-                                    when it's ready to be shown.
-                                </p>
-                            </div>
-                        </div>
-                        <Link
-                            to="/vibes"
-                            className="group flex shrink-0 items-center gap-2 font-mono text-sm transition-colors hover:text-brand-500 text-zinc-400"
-                        >
-                            meanwhile, check the vibes
-                            <ArrowUpRight
-                                size={15}
-                                weight="bold"
-                                className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                            />
-                        </Link>
-                    </div>
-                </Reveal>
             </section>
 
             <Contact />
