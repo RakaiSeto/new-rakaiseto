@@ -1,0 +1,14 @@
+# VCS
+.git
+.gitignore
+
+# Dependencies / build output
+node_modules
+dist
+dist-ssr
+logs
+
+# Local env — never ship .env.local into image layers; VITE_* come in
+# as build args from GH Actions secrets instead.
+.env.local
+*.local
