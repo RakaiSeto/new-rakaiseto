@@ -26,7 +26,8 @@ export default function ProjectRow({ project, index }) {
 
           {/* summary — middle, ellipsized when long */}
           <p className="line-clamp-1 text-sm leading-relaxed text-zinc-400 md:col-span-3">
-            {project.summary}
+            {/* NBSP keeps the one-line slot when a work has no summary */}
+            {project.summary || '\u00A0'}
           </p>
 
           {/* stack + year — end */}

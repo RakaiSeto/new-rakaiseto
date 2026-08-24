@@ -23,7 +23,9 @@ function ProjectCell({ project }) {
       </div>
 
       <p className="mt-2 line-clamp-1 text-sm leading-relaxed text-zinc-400">
-        {project.summary}
+        {/* NBSP keeps the one-line slot when a work has no summary, so the
+            year chip below stays aligned with its grid-row neighbor */}
+        {project.summary || '\u00A0'}
       </p>
 
       <div className="mt-2 flex flex-wrap items-center gap-2">

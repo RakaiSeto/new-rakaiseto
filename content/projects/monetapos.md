@@ -1,6 +1,6 @@
 ---
 title: Moneta POS
-order: 3
+order: 4
 year: 2023
 category: work
 summary: "A POS that processed real money in real venues — then the client stopped using it. Last I heard, it's running in a cafe in Jakarta. I don't know which one."

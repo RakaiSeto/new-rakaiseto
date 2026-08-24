@@ -24,7 +24,7 @@ export default function Nav() {
 
         <div className="hidden items-center gap-6 md:flex">
           <NavLink to="/projects" className={linkClass}>
-            Projects
+            Works
           </NavLink>
           <NavLink to="/vibes" className={linkClass}>
             Vibes

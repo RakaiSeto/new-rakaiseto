@@ -1,6 +1,6 @@
 ---
 title: Panjang
-order: 4
+order: 5
 year: 2025
 category: personal
 summary: "The opposite of a link shortener. It makes your links longer. That's the whole thing."

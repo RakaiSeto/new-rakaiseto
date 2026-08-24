@@ -142,13 +142,13 @@ export default function Home() {
                     <figure className="relative w-full rounded-2xl border border-white/10 bg-zinc-950 md:max-w-[28rem]">
                         {/* photo plate — the full-body shot is taller than the card:
                             hair pokes over the top edge, feet dangle below the bottom.
-                            The image is anchored so its hips (54.7% down) sit exactly
+                            The image is anchored so its hips (53.7% down) sit exactly
                             on the seam; the thighs run behind the opaque panel. */}
                         <div className="relative aspect-[7/5]">
                             <img
                                 src="/images/hero.png"
                                 alt="Rakai Seto Sembodo"
-                                className="absolute inset-x-0 top-0 h-auto w-full select-none -translate-y-[7.1%]"
+                                className="absolute inset-x-0 top-0 h-auto w-full select-none -translate-y-[5%] pointer-events-none"
                             />
 
                             {/* spine — fills the dead left flank, editorial index */}
@@ -186,15 +186,9 @@ export default function Home() {
                                 </div>
                             </div>
 
-                            {/* CTA footer row */}
-                            <div className="mt-4 flex items-center justify-between border-t border-white/10 pt-3">
-                                <a
-                                    href="/CV_RAKAI.pdf"
-                                    className="flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-400 transition-colors hover:text-brand-400"
-                                >
-                                    <FileText size={13} />
-                                    download cv
-                                </a>
+                            {/* CTA footer row — dangling image is pointer-events-none,
+                                so the link stays clickable under the legs */}
+                            <div className="mt-4 flex items-center justify-end border-t border-white/10 pt-3">
                                 <a
                                     href="https://www.linkedin.com/in/rakaiseto"
                                     target="_blank"
@@ -217,18 +211,16 @@ export default function Home() {
             <section id="work" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:py-32">
                 <Reveal className="mb-16 flex items-end justify-between md:mb-20">
                     <div>
-                        <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">the chapters</p>
+                        <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">the works</p>
                         <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
-                            Shipped, maintained,
-                            <br />
-                            or painfully learned from.
+                            Shipped, maintained, or learned from.
                         </h2>
                     </div>
                     <Link
                         to="/projects"
                         className="hidden font-mono text-sm transition-colors hover:text-brand-500 md:block text-zinc-400"
                     >
-                        all chapters →
+                        all works →
                     </Link>
                 </Reveal>
 

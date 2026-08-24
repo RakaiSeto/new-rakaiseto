@@ -238,7 +238,7 @@ export default function About() {
           now / about
         </p>
         <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
-          Where I work, and what else I've done.
+          Where I work(ed), and what else I've done.
         </h2>
       </Reveal>
 
