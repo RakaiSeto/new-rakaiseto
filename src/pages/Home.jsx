@@ -25,8 +25,12 @@ export default function Home() {
         'Fullstack developer in Jakarta. Backend-heavy systems in Go, Laravel, and React that survive production.',
     );
 
-    // All four chapters render as editorial index rows — Panjang keeps its
-    // personality as the final row instead of a special-case strip.
+    // Main page previews the works: top three work entries plus the first
+    // school assignment, in site order. The full list lives on /projects.
+    const preview = [
+        ...projects.filter((p) => p.category === 'work').slice(0, 3),
+        ...projects.filter((p) => p.category === 'school').slice(0, 1),
+    ];
 
     return (
         <>
@@ -225,7 +229,7 @@ export default function Home() {
                 </Reveal>
 
                 <div className="border-t border-white/10">
-                    {projects.map((project, i) => (
+                    {preview.map((project, i) => (
                         <ProjectRow key={project.slug} project={project} index={i} />
                     ))}
                 </div>
