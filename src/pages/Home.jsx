@@ -35,14 +35,14 @@ export default function Home() {
     return (
         <>
             {/* HERO — proof first: identity, current role, evidence ledger */}
-            <section className="mx-auto grid min-h-[100dvh] max-w-[1400px] items-center gap-10 overflow-x-clip px-5 pt-32 pb-12 md:grid-cols-12 md:gap-8 md:pt-24">
+            <section className="mx-auto grid min-h-[100dvh] max-w-[1400px] items-center gap-8 overflow-x-clip px-5 pt-24 pb-12 md:grid-cols-12 md:gap-8">
                 <motion.div
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
-                    className="order-2 md:order-1 md:col-span-8"
+                    className="order-1 md:col-span-8"
                 >
-                    <p className="mb-5 font-mono text-md uppercase tracking-[0.25em] text-zinc-400">
+                    <p className="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-zinc-400">
                         rakai seto sembodo — jakarta &amp; malang, id
                     </p>
 
@@ -141,7 +141,7 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
-                    className="order-1 md:order-2 flex justify-center md:col-span-4 md:justify-end"
+                    className="order-2 flex justify-center md:col-span-4 md:justify-end"
                 >
                     <figure className="relative w-full rounded-2xl border border-white/10 bg-zinc-950 md:max-w-[28rem]">
                         {/* photo plate — the full-body shot is taller than the card:
@@ -199,7 +199,7 @@ export default function Home() {
             <About />
 
             {/* THE CHAPTERS — sneak peek */}
-            <section id="work" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:py-32">
+            <section id="work" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-20 md:py-28">
                 <Reveal className="mb-16 flex items-end justify-between md:mb-20">
                     <div>
                         <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">

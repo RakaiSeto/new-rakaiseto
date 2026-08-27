@@ -25,7 +25,7 @@ export default function ProjectRow({ project, index }) {
           </div>
 
           {/* summary — middle, ellipsized when long */}
-          <p className="line-clamp-1 text-md leading-relaxed text-zinc md:col-span-3">
+          <p className="line-clamp-1 text-sm leading-relaxed text-zinc-400 md:col-span-3">
             {/* NBSP keeps the one-line slot when a work has no summary */}
             {project.summary || '\u00A0'}
           </p>

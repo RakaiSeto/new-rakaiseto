@@ -7,7 +7,7 @@ const CV_URL = '/CV_RAKAI.pdf'
 
 export default function Contact() {
   return (
-    <section id="contact" className="mx-auto max-w-[1400px] px-5 py-28 md:py-40">
+    <section id="contact" className="mx-auto max-w-[1400px] px-5 py-20 md:py-28">
       <div className="mx-auto max-w-3xl text-center">
         <h2 className="text-4xl font-semibold tracking-tighter leading-[1.05] md:text-6xl">
           <MaskWords text="Want to build something spectacular with me?" delay={0.15} />

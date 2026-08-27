@@ -232,7 +232,7 @@ function TimelineList({ items, variant = 'ledger' }) {
 
 export default function About() {
   return (
-    <section id="about" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:py-32">
+    <section id="about" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-20 md:py-28">
       <Reveal className="mb-14">
         <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
           Where I work(ed), and what else I've done.

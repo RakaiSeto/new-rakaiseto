@@ -233,9 +233,9 @@ export default function Vibes() {
 
         <Reveal delay={0.4} className="shrink-0">
           {data?.nowPlaying ? (
-            <div className="flex items-center gap-3 rounded-full border border-brand-500/30 bg-brand-500/5 px-5 py-2.5">
-              <BreathingDot className="bg-brand-500" />
-              <p className="font-mono text-xs tracking-wide">
+            <div className="flex min-w-0 max-w-full items-center gap-3 rounded-full border border-brand-500/30 bg-brand-500/5 px-5 py-2.5">
+              <BreathingDot className="shrink-0 bg-brand-500" />
+              <p className="truncate font-mono text-xs tracking-wide">
                 scrobbling now —{' '}
                 <span className="text-brand-400">
                   {data.nowPlaying.track}
@@ -244,9 +244,9 @@ export default function Vibes() {
               </p>
             </div>
           ) : (
-            <div className="flex items-center gap-3 rounded-full border px-5 py-2.5 border-white/10">
-              <BreathingDot className="bg-zinc-400" />
-              <p className="font-mono text-xs tracking-wide text-zinc-400">
+            <div className="flex min-w-0 max-w-full items-center gap-3 rounded-full border px-5 py-2.5 border-white/10">
+              <BreathingDot className="shrink-0 bg-zinc-400" />
+              <p className="truncate font-mono text-xs tracking-wide text-zinc-400">
                 last scrobble {timeAgo(data?.lastScrobbleAt)}
               </p>
             </div>
