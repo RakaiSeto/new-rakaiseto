@@ -9,9 +9,6 @@ export default function Contact() {
   return (
     <section id="contact" className="mx-auto max-w-[1400px] px-5 py-28 md:py-40">
       <div className="mx-auto max-w-3xl text-center">
-        <p className="mb-6 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
-          the desk
-        </p>
         <h2 className="text-4xl font-semibold tracking-tighter leading-[1.05] md:text-6xl">
           <MaskWords text="Want to build something spectacular with me?" delay={0.15} />
         </h2>
@@ -58,20 +55,6 @@ export default function Contact() {
               download cv
             </a>
           </Magnetic>
-        </Reveal>
-
-        <Reveal delay={0.8}>
-          <Link
-            to="/vibes"
-            className="group mt-10 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.25em] transition-colors hover:text-brand-500 text-zinc-600"
-          >
-            or just like me for my music taste?
-            <ArrowUpRight
-              size={14}
-              weight="bold"
-              className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-            />
-          </Link>
         </Reveal>
       </div>
     </section>

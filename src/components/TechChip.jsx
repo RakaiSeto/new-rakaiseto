@@ -28,8 +28,8 @@ export default function TechChip({ name, compact = false }) {
   const Logo = LOGOS[name]
   return (
     <span
-      className={`inline-flex items-center gap-1.5 rounded-full border font-mono border-white/10 text-zinc-400 ${
-        compact ? 'px-2 py-0.5 text-[10px]' : 'px-3 py-1 text-[11px]'
+      className={`inline-flex items-center gap-1.5 rounded-full border font-mono border-white/20 text-zinc-300 ${
+        compact ? 'px-2 py-0.5 text-[10px]' : 'px-3 py-1 text-[12px]'
       }`}
     >
       {Logo ? (

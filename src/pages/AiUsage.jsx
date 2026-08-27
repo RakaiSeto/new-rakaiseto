@@ -17,11 +17,11 @@ function Stat({ label, value, hint }) {
   return (
     <div className="border-t py-6 border-white/10">
       <p className="font-mono text-2xl tracking-tight md:text-3xl">{value}</p>
-      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600">
+      <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
         {label}
       </p>
       {hint ? (
-        <p className="mt-1 text-xs text-zinc-600">{hint}</p>
+        <p className="mt-1 text-xs text-zinc-500">{hint}</p>
       ) : null}
     </div>
   )
@@ -30,7 +30,7 @@ function Stat({ label, value, hint }) {
 function ModelRow({ rank, name, cost, tokens, share, showBar }) {
   return (
     <li className="grid grid-cols-12 items-baseline gap-3 border-t py-4 border-white/10">
-      <span className="col-span-1 font-mono text-[11px] text-zinc-600">
+      <span className="col-span-1 font-mono text-[12px] text-zinc-300">
         {String(rank).padStart(2, '0')}
       </span>
       <span className="col-span-7 truncate text-sm font-medium md:col-span-3">{name}</span>
@@ -99,7 +99,7 @@ export default function AiUsage() {
   if (error) {
     return (
       <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
-        <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-400">ai usage</p>
+        <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-300">ai usage</p>
         <h1 className="mt-4 text-4xl font-semibold tracking-tighter md:text-6xl">
           The snapshot is missing.
         </h1>
@@ -144,7 +144,7 @@ export default function AiUsage() {
     <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
       <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
         <div>
-          <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+          <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-300">
             ai usage · tokscale
           </p>
           <h1 className="text-4xl font-semibold leading-[1.04] tracking-tighter md:text-6xl">
@@ -202,7 +202,7 @@ export default function AiUsage() {
             </div>
           </div>
         </Reveal>
-        <div className="grid grid-cols-12 gap-3 border-b pb-2 font-mono text-[10px] uppercase tracking-[0.2em] border-white/10 text-zinc-600">
+        <div className="grid grid-cols-12 gap-3 border-b pb-2 font-mono text-[11px] uppercase tracking-[0.2em] border-white/10 text-zinc-300">
           <span className="col-span-1">#</span>
           <span className="col-span-7 md:col-span-3">model</span>
           <span className="col-span-6 hidden md:block" />
@@ -229,7 +229,7 @@ export default function AiUsage() {
       </div>
 
       <Reveal className="mt-20 border-t pt-8 border-white/10">
-        <p className="font-mono text-[11px] tracking-[0.2em] text-zinc-600">
+        <p className="font-mono text-[11px] tracking-[0.2em] text-zinc-500">
           LIVE VIA TOKSCALE.AI · READ FROM LOCAL AGENT SESSIONS · SNAPSHOT FALLBACK IF THE PROXY SLEEPS
         </p>
       </Reveal>

@@ -40,9 +40,9 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
-                    className="order-2 md:order-1 md:col-span-7"
+                    className="order-2 md:order-1 md:col-span-8"
                 >
-                    <p className="mb-5 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+                    <p className="mb-5 font-mono text-md uppercase tracking-[0.25em] text-zinc-400">
                         rakai seto sembodo — jakarta &amp; malang, id
                     </p>
 
@@ -60,27 +60,27 @@ export default function Home() {
                     </p>
 
                     {/* evidence ledger — now / before, divided lines, no cards */}
-                    <div className="mt-8 max-w-[56ch] border-t border-white/10">
+                    <div className="mt-8 max-w-[60ch] border-t border-white/10">
                         <div className="grid gap-2 py-4 sm:grid-cols-12 sm:gap-6">
                             <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-brand-400 sm:col-span-2">
                                 now
                             </span>
-                            <div className="sm:col-span-8">
+                            <div className="sm:col-span-7">
                                 <p className="text-sm font-medium text-zinc-200">Fullstack Developer Intern — PT Intelix Global Crossing</p>
                                 <p className="mt-1 text-sm leading-relaxed text-zinc-500">
                                     Final-year informatics student at State Polytechnic of Malang.
                                 </p>
                             </div>
-                            <span className="font-mono text-[11px] tracking-[0.15em] text-zinc-600 sm:col-span-2 sm:text-right">
+                            <span className="font-mono text-[12px] tracking-[0.15em] text-zinc-300 sm:col-span-3 sm:text-right">
                                 Jul 2026 – now
                             </span>
                         </div>
 
-                        <div className="grid gap-2 border-t border-white/10 py-4 sm:grid-cols-12 sm:gap-6">
-                            <span className="font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-600 sm:col-span-2">
+                        <div className="grid gap-1 border-t border-white/10 py-4 sm:grid-cols-12 sm:gap-4">
+                            <span className="font-mono text-[12px] uppercase tracking-[0.2em] text-zinc-500 sm:col-span-2">
                                 before
                             </span>
-                            <div className="sm:col-span-8">
+                            <div className="sm:col-span-7">
                                 <p className="text-sm font-medium text-zinc-200">
                                     Co-founder / Backend Developer — stealth telecom SaaS
                                 </p>
@@ -88,12 +88,12 @@ export default function Home() {
                                     Go microservices used by a major Indonesian ride-hailing company. PostgreSQL, RabbitMQ, Redis, Docker CI/CD.
                                 </p>
                             </div>
-                            <span className="font-mono text-[11px] tracking-[0.15em] text-zinc-600 sm:col-span-2 sm:text-right">
+                            <span className="font-mono text-[11px] tracking-[0.15em] text-zinc-300 sm:col-span-3 sm:text-right">
                                 Sep 2024 – Sep 2025
                             </span>
                         </div>
 
-                        <p className="border-t border-white/10 py-4 font-mono text-[11px] uppercase tracking-[0.15em] text-zinc-600">
+                        <p className="border-t border-white/10 py-4 font-mono text-[12px] uppercase tracking-[0.15em] text-zinc-300">
                             3+ years of experiences
                         </p>
                     </div>
@@ -141,53 +141,40 @@ export default function Home() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
-                    className="order-1 md:order-2 flex justify-center md:col-span-5 md:justify-end"
+                    className="order-1 md:order-2 flex justify-center md:col-span-4 md:justify-end"
                 >
                     <figure className="relative w-full rounded-2xl border border-white/10 bg-zinc-950 md:max-w-[28rem]">
                         {/* photo plate — the full-body shot is taller than the card:
                             hair pokes over the top edge, feet dangle below the bottom.
                             The image is anchored so its hips (53.7% down) sit exactly
                             on the seam; the thighs run behind the opaque panel. */}
-                        <div className="relative aspect-[7/5]">
+                        <div className="relative @container aspect-[7/5]">
+                            <span
+                                aria-hidden="true"
+                                className="pointer-events-none absolute inset-0 flex select-none flex-col items-center justify-center gap-1 font-black uppercase leading-none text-white/15 md:gap-2"
+                            >
+                                <span className="pl-[0.3em] tracking-[0.3em] text-[13cqw]">rakai</span>
+                                <span className="pl-[0.3em] tracking-[0.3em] text-[13cqw]">seto</span>
+                                <span className="pl-[0.3em] tracking-[0.3em] text-[13cqw]">sembodo</span>
+                            </span>
                             <img
                                 src="/images/hero.png"
                                 alt="Rakai Seto Sembodo"
-                                className="absolute inset-x-0 top-0 h-auto w-full select-none -translate-y-[5%] pointer-events-none"
+                                className="absolute inset-x-0 top-0 mx-auto h-auto w-[92%] select-none pointer-events-none -translate-y-[1%]"
                             />
-
-                            {/* spine — fills the dead left flank, editorial index */}
-                            <span
-                                aria-hidden="true"
-                                className="absolute left-3.5 top-1/2 hidden -translate-y-1/2 rotate-180 select-none whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.4em] text-zinc-600 [writing-mode:vertical-rl] md:block"
-                            >
-                                rakaiseto — fullstack developer
-                            </span>
                         </div>
 
                         {/* info panel — image now renders OVER this layer (legs cross
                             the text); identity block left, meta right; no cards */}
                         <figcaption className="rounded-b-2xl border-t border-white/10 bg-zinc-950 px-5 pb-4 pt-4">
-                            <div className="flex items-end justify-between gap-4">
-                                <div>
-                                    <p className="text-lg font-semibold leading-tight tracking-tight text-zinc-100 md:text-xl">
-                                        Rakai Seto Sembodo
-                                    </p>
-                                    <p className="mt-1 text-sm leading-relaxed text-zinc-400">
-                                        backend-leaning fullstack developer
-                                    </p>
-                                </div>
-                                <div className="text-right">
-                                    <p className="flex items-center justify-end gap-2 font-mono text-xs tracking-[0.1em] text-brand-400">
-                                        <BreathingDot className="bg-brand-500" />
-                                        open to work
-                                    </p>
-                                    <p className="mt-2 font-mono text-xs tracking-[0.1em] text-zinc-500">
-                                        jakarta &amp; malang, id
-                                    </p>
-                                    <p className="font-mono text-xs tracking-[0.1em] text-zinc-500">
-                                        utc+7
-                                    </p>
-                                </div>
+                            <div className="text-right w-full">
+                                <p className="flex items-center justify-end gap-2 font-mono text-xs tracking-[0.1em] text-brand-400">
+                                    <BreathingDot className="bg-brand-500" />
+                                    open to work
+                                </p>
+                                <p className="mt-2 font-mono text-xs tracking-[0.1em] text-zinc-300">
+                                    jakarta &amp; malang, id — utc+7
+                                </p>
                             </div>
 
                             {/* CTA footer row — dangling image is pointer-events-none,
@@ -215,9 +202,8 @@ export default function Home() {
             <section id="work" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:py-32">
                 <Reveal className="mb-16 flex items-end justify-between md:mb-20">
                     <div>
-                        <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">the works</p>
                         <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
-                            Shipped, maintained, or learned from.
+                            Works I shipped, maintained, or learned from.
                         </h2>
                     </div>
                     <Link

@@ -18,7 +18,7 @@ function ProjectCell({ project }) {
         </h3>
         <ArrowUpRight
           size={16}
-          className="shrink-0 text-zinc-600 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-brand-400"
+          className="shrink-0 text-zinc-500 transition-all duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 group-hover:text-brand-400"
         />
       </div>
 
@@ -36,7 +36,7 @@ function ProjectCell({ project }) {
         {project.stack.map((s) => (
           <span
             key={s}
-            className="rounded-full border px-2.5 py-0.5 font-mono text-[10px] border-white/10 text-zinc-400"
+            className="rounded-full border px-2.5 py-0.5 font-mono text-[11px] border-white/20 text-zinc-300"
           >
             {s}
           </span>
@@ -57,16 +57,9 @@ export default function Projects() {
   return (
     <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
       <Reveal className="mb-14">
-        <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
-          the chapters
-        </p>
         <h1 className="text-4xl font-semibold tracking-tighter md:text-6xl">
-          Every project, told straight.
+          Every works, told as it is.
         </h1>
-        <p className="mt-4 max-w-[52ch] leading-relaxed text-zinc-400">
-          The shipped, the shelved, and everything in between. No
-          highlight reel — each chapter gets the same honesty as the last.
-        </p>
       </Reveal>
 
       <div className="grid grid-cols-1 gap-x-12 md:grid-cols-2">
@@ -80,7 +73,7 @@ export default function Projects() {
       {school.length > 0 && (
         <div className="mt-16 md:mt-20">
           <Reveal className="border-t border-white/10 pt-8">
-            <p className="font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+            <p className="font-mono text-sm uppercase tracking-[0.25em] text-zinc-300">
               school assignments
             </p>
           </Reveal>

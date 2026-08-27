@@ -223,7 +223,7 @@ export default function Vibes() {
     <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
       <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
         <div>
-          <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
+          <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-300">
             vibes · last.fm
           </p>
           <h1 className="text-4xl font-semibold leading-[1.04] tracking-tighter md:text-6xl">

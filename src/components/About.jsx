@@ -58,7 +58,7 @@ function LedgerRow({ item, current = false, first = false, last = false }) {
             <p className="mt-1 max-w-[62ch] text-sm leading-relaxed text-zinc-400">{item.line}</p>
           )}
         </div>
-        <span className="shrink-0 font-mono text-[11px] tracking-[0.15em] text-zinc-600 sm:text-right">
+        <span className="shrink-0 font-mono text-[12px] tracking-[0.15em] text-zinc-300 sm:text-right">
           {item.period}
         </span>
       </div>
@@ -99,7 +99,7 @@ function LedgerGroup({ name, items, first = false, last = false }) {
                 <p className="text-sm text-zinc-500">{item.role}</p>
                 <p className="mt-1 max-w-[62ch] text-sm leading-relaxed text-zinc-400">{item.line}</p>
               </div>
-              <span className="shrink-0 font-mono text-[11px] tracking-[0.15em] text-zinc-600 sm:text-right">
+              <span className="shrink-0 font-mono text-[12px] tracking-[0.15em] text-zinc-300 sm:text-right">
                 {item.period}
               </span>
             </div>
@@ -117,7 +117,7 @@ function LedgerGroup({ name, items, first = false, last = false }) {
 function IndexRow({ item, index }) {
   return (
     <div className="border-t border-white/10 py-4 md:grid md:grid-cols-[2.5rem_1fr] md:items-baseline md:gap-4">
-      <span className="hidden text-right font-mono text-[11px] tracking-[0.15em] text-zinc-600 md:block">
+      <span className="hidden text-right font-mono text-[12px] tracking-[0.15em] text-zinc-300 md:block">
         {String(index + 1).padStart(2, '0')}
       </span>
       <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:items-baseline sm:justify-between sm:gap-6">
@@ -126,7 +126,7 @@ function IndexRow({ item, index }) {
           <p className="text-sm text-zinc-500">{item.role}</p>
           <p className="mt-1 max-w-[62ch] text-sm leading-relaxed text-zinc-400">{item.line}</p>
         </div>
-        <span className="shrink-0 font-mono text-[11px] tracking-[0.15em] text-zinc-600 sm:text-right">
+        <span className="shrink-0 font-mono text-[12px] tracking-[0.15em] text-zinc-300 sm:text-right">
           {item.period}
         </span>
       </div>
@@ -137,7 +137,7 @@ function IndexRow({ item, index }) {
 function IndexGroup({ name, items, index }) {
   return (
     <div className="border-t border-white/10 py-4 md:grid md:grid-cols-[2.5rem_1fr] md:items-baseline md:gap-4">
-      <span className="hidden text-right font-mono text-[11px] tracking-[0.15em] text-zinc-600 md:block">
+      <span className="hidden text-right font-mono text-[12px] tracking-[0.15em] text-zinc-300 md:block">
         {String(index + 1).padStart(2, '0')}
       </span>
       <div className="min-w-0">
@@ -152,7 +152,7 @@ function IndexGroup({ name, items, index }) {
                 <p className="text-sm text-zinc-500">{item.role}</p>
                 <p className="mt-1 max-w-[62ch] text-sm leading-relaxed text-zinc-400">{item.line}</p>
               </div>
-              <span className="shrink-0 font-mono text-[11px] tracking-[0.15em] text-zinc-600 sm:text-right">
+              <span className="shrink-0 font-mono text-[12px] tracking-[0.15em] text-zinc-300 sm:text-right">
                 {item.period}
               </span>
             </div>
@@ -234,9 +234,6 @@ export default function About() {
   return (
     <section id="about" className="mx-auto max-w-[1400px] scroll-mt-24 px-5 py-24 md:py-32">
       <Reveal className="mb-14">
-        <p className="mb-4 font-mono text-xs uppercase tracking-[0.25em] text-zinc-500">
-          now / about
-        </p>
         <h2 className="text-3xl font-semibold tracking-tight md:text-5xl">
           Where I work(ed), and what else I've done.
         </h2>
@@ -249,7 +246,7 @@ export default function About() {
         {/* column 1 — the jobs */}
         <div>
           <Reveal delay={0.1}>
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+            <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.2em] text-zinc-300">
               experience
             </p>
             <TimelineList items={about.experience} />
@@ -259,7 +256,7 @@ export default function About() {
         {/* column 2 — education & other work */}
         <div>
           <Reveal delay={0.2}>
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+            <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.2em] text-zinc-300">
               education
             </p>
             <div className="border-l-2 border-brand-500/40 pl-4">
@@ -267,14 +264,14 @@ export default function About() {
                 {about.education.school}
                 <span className="text-zinc-500"> · {about.education.field}</span>
               </p>
-              <p className="mt-1.5 font-mono text-[11px] tracking-[0.15em] text-zinc-600">
+              <p className="mt-1.5 font-mono text-[12px] tracking-[0.15em] text-zinc-300">
                 {about.education.period} · GPA {about.education.gpa} / 4.00
               </p>
             </div>
           </Reveal>
 
           <Reveal delay={0.25} className="mt-12">
-            <p className="mb-4 font-mono text-[11px] uppercase tracking-[0.2em] text-zinc-500">
+            <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.2em] text-zinc-300">
               other experiences
             </p>
             <TimelineList items={about.other} variant="indexed" />

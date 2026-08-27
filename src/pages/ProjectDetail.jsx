@@ -170,7 +170,7 @@ export default function ProjectDetail() {
         </nav>
         {/* header */}
         <header className="order-1 md:order-none md:col-span-9">
-          <Reveal className="mb-8 flex items-center gap-4 font-mono text-xs tracking-[0.2em] text-zinc-500">
+          <Reveal className="mb-8 flex items-center gap-4 font-mono text-xs tracking-[0.2em] text-zinc-400">
             <Link
               to="/projects"
               className="flex items-center gap-2 transition-colors hover:text-brand-500"
@@ -178,10 +178,6 @@ export default function ProjectDetail() {
               <ArrowLeft size={14} weight="bold" />
               all projects
             </Link>
-            <span className="h-px w-8 bg-white/15" />
-            <span>
-              project {String(index + 1).padStart(2, '0')}
-            </span>
           </Reveal>
 
           <h1 className="text-5xl font-semibold tracking-tighter md:text-7xl">
@@ -222,7 +218,7 @@ export default function ProjectDetail() {
                   href={project.repo}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center gap-2 rounded-full border px-6 py-3 font-mono text-sm transition-all hover:border-brand-500/60 active:scale-[0.98] border-white/15 text-zinc-300 hover:text-brand-400"
+                  className="flex items-center gap-2 rounded-full border px-6 py-3 font-mono text-sm transition-all hover:border-brand-500/60 active:scale-[0.98] border-white/20 text-zinc-300 hover:text-brand-400"
                 >
                   <GithubLogo size={15} />
                   source
