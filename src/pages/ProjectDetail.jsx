@@ -1,11 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
 import Markdown from 'react-markdown';
-import { ArrowLeft, ArrowUpRight, GithubLogo, GlobeHemisphereWest } from '@phosphor-icons/react';
-import { motion, useScroll, useSpring } from 'framer-motion';
+import { useCallback, useEffect, useState } from 'react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, GithubLogo, GlobeHemisphereWest, SquaresFour } from '@phosphor-icons/react';
+import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
 import PosMock from '../components/PosMock.jsx';
 import Magnetic from '../components/Magnetic.jsx';
 import TechChip from '../components/TechChip.jsx';
 import { Reveal, MaskWords } from '../components/Motion.jsx';
+import ProjectModal from '../components/ProjectModal.jsx';
 import { getProject, nextProject, projects } from '../lib/projects.js';
 import { usePageMeta } from '../lib/seo.js';
 import NotFound from './NotFound.jsx';
@@ -87,9 +89,16 @@ export default function ProjectDetail() {
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 24 });
 
+    const [modalOpen, setModalOpen] = useState(false);
+    const openModal = useCallback(() => setModalOpen(true), []);
+    const closeModal = useCallback(() => setModalOpen(false), []);
+
+    // an open switcher must not survive a route change (back/forward, select)
+    useEffect(() => setModalOpen(false), [slug]);
+
     usePageMeta(project ? `${project.title} — Rakai Seto Sembodo` : 'Project — Rakai Seto Sembodo', project?.summary);
 
-    if (!project) return <NotFound />;
+    if (!project) return <NotFound />;if (!project) return <NotFound />;if (!project) return <NotFound />;
 
     const index = projects.findIndex((p) => p.slug === project.slug);
     const next = nextProject(project.slug);
@@ -110,7 +119,27 @@ export default function ProjectDetail() {
             horizontal scroll strip on mobile. Not wrapped in Reveal: a
             transformed ancestor would break position:sticky. */}
                 <nav aria-label="projects" className="order-2 md:order-none md:col-span-3 md:row-span-2 md:self-stretch">
-                    <div className="md:sticky md:top-28">
+                    {/* mobile: modal trigger — the desktop rail, hidden below md */}
+                    <div className="md:hidden">
+                        <button
+                            type="button"
+                            onClick={openModal}
+                            aria-haspopup="dialog"
+                            aria-expanded={modalOpen}
+                            className="flex w-full items-center justify-between gap-4 border-y border-white/10 py-4 text-left font-mono text-[14px] uppercase tracking-[0.2em] text-zinc-300 transition-colors hover:text-zinc-100 active:scale-[0.99]"
+                        >
+                            <span className="flex items-center gap-2">
+                                <SquaresFour size={15} weight="bold" className="text-brand-400" />
+                                projects
+                                <span className="text-zinc-600">({projects.length})</span>
+                            </span>
+                            <span className="flex items-center gap-1 text-brand-400">
+                                browse
+                                <ArrowRight size={14} weight="bold" />
+                            </span>
+                        </button>
+                    </div>
+                    <div className="hidden md:sticky md:top-28 md:block">
                         <p className="mb-3 font-mono text-[14px] uppercase tracking-[0.25em] text-zinc-500">projects</p>
                         <ul className="-mx-5 flex gap-2 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:mx-0 md:block md:space-y-0.5 md:px-0 md:pb-0">
                             {mainProjects.map((p, i) => (
@@ -240,6 +269,16 @@ export default function ProjectDetail() {
                     </Link>
                 </Reveal>
             </nav>
+            <AnimatePresence>
+                {modalOpen && (
+                    <ProjectModal
+                        mainProjects={mainProjects}
+                        schoolProjects={schoolProjects}
+                        currentSlug={project.slug}
+                        onClose={closeModal}
+                    />
+                )}
+            </AnimatePresence>
         </article>
     );
 }
