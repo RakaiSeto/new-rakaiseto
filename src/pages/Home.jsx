@@ -59,8 +59,51 @@ export default function Home() {
                         open to work — fullstack &amp; backend roles
                     </p>
 
-                    {/* proof strip — two facts, no rows; the full history lives in About */}
-                    <div className="mt-8 max-w-[60ch] border-t border-white/10">
+                    {/* evidence ledger — now / before, divided lines, no cards.
+                        Desktop only; mobile gets the compact strip below. */}
+                    <div className="mt-8 hidden max-w-[60ch] border-t border-white/10 md:block">
+                        <div className="grid gap-2 py-4 sm:grid-cols-12 sm:gap-6">
+                            <span className="font-mono text-[14px] uppercase tracking-[0.2em] text-brand-400 sm:col-span-2">
+                                now
+                            </span>
+                            <div className="sm:col-span-7">
+                                <p className="text-[14px] font-medium text-zinc-200">
+                                    Fullstack Developer Intern — PT Intelix Global Crossing
+                                </p>
+                                <p className="mt-1 text-[14px] leading-relaxed text-zinc-500">
+                                    Final-year informatics student at State Polytechnic of Malang.
+                                </p>
+                            </div>
+                            <span className="font-mono text-[14px] tracking-[0.15em] text-zinc-300 sm:col-span-3 sm:text-right">
+                                Jul 2026 – now
+                            </span>
+                        </div>
+
+                        <div className="grid gap-1 border-t border-white/10 py-4 sm:grid-cols-12 sm:gap-4">
+                            <span className="font-mono text-[14px] uppercase tracking-[0.2em] text-zinc-500 sm:col-span-2">
+                                before
+                            </span>
+                            <div className="sm:col-span-7">
+                                <p className="text-[14px] font-medium text-zinc-200">
+                                    Co-founder / Backend Developer — stealth telecom SaaS
+                                </p>
+                                <p className="mt-1 text-[14px] leading-relaxed text-zinc-500">
+                                    Go microservices used by a major Indonesian ride-hailing company. PostgreSQL, RabbitMQ, Redis,
+                                    Docker CI/CD.
+                                </p>
+                            </div>
+                            <span className="font-mono text-[14px] tracking-[0.15em] text-zinc-300 sm:col-span-3 sm:text-right">
+                                Sep 2024 – Sep 2025
+                            </span>
+                        </div>
+
+                        <p className="border-t border-white/10 py-4 font-mono text-[14px] uppercase tracking-[0.15em] text-zinc-300">
+                            3+ years of experiences
+                        </p>
+                    </div>
+
+                    {/* proof strip — the same two facts, compact; mobile only */}
+                    <div className="mt-8 max-w-[60ch] border-t border-white/10 md:hidden">
                         <p className="py-4 font-mono text-[14px] uppercase tracking-[0.2em] text-zinc-300">
                             3+ years of experiences
                         </p>
