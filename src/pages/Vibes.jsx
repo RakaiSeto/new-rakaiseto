@@ -173,14 +173,14 @@ export default function Vibes() {
                     <Skeleton className="h-24" />
                 </div>
                 <div className="mt-14 grid gap-10 md:grid-cols-12">
-                    <div className="md:col-span-8">
+                    <div className="order-2 md:order-1 md:col-span-8">
                         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
                             {[...Array(8)].map((_, i) => (
                                 <Skeleton key={i} className="aspect-square" />
                             ))}
                         </div>
                     </div>
-                    <div className="md:col-span-4 space-y-4">
+                    <div className="order-1 md:order-2 md:col-span-4 space-y-4">
                         <Skeleton className="h-10" />
                         <Skeleton className="h-12" />
                         <Skeleton className="h-12" />
@@ -238,8 +238,8 @@ export default function Vibes() {
             </div>
 
             <div className="mt-16 grid grid-cols-1 gap-14 md:grid-cols-12 md:gap-10">
-                {/* RECENT HISTORY — album covers, max 20 */}
-                <div className="min-w-0 md:col-span-8">
+                {/* RECENT HISTORY — album covers, max 20 — ranking first on mobile */}
+                <div className="min-w-0 order-2 md:order-1 md:col-span-8">
                     <Reveal>
                         <div className="mb-6 flex items-end justify-between">
                             <h2 className="text-xl font-semibold tracking-tight">Recent history</h2>
@@ -255,8 +255,8 @@ export default function Vibes() {
                     </ul>
                 </div>
 
-                {/* TOP CHARTS — shared period tabs */}
-                <aside className="min-w-0 md:col-span-4">
+                {/* TOP CHARTS — shared period tabs — shown first on mobile */}
+                <aside className="min-w-0 order-1 md:order-2 md:col-span-4">
                     <Reveal delay={0.15}>
                         <div className="mb-6 flex items-end justify-between gap-3">
                             <h2 className="text-xl font-semibold tracking-tight">Top charts</h2>
