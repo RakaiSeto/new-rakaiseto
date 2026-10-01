@@ -6,7 +6,6 @@ import { ArrowUpRight, FileText, LinkedinLogo, List, X } from '@phosphor-icons/r
 const NAV_ITEMS = [
     { to: '/projects', label: 'Works' },
     { to: '/vibes', label: 'Vibes' },
-    { to: '/ai', label: 'AI usage' },
     { to: '/wall', label: 'The wall' },
 ];
 

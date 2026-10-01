@@ -8,7 +8,6 @@ import Home from './pages/Home.jsx';
 const Projects = lazy(() => import('./pages/Projects.jsx'));
 const ProjectDetail = lazy(() => import('./pages/ProjectDetail.jsx'));
 const Vibes = lazy(() => import('./pages/Vibes.jsx'));
-const AiUsage = lazy(() => import('./pages/AiUsage.jsx'));
 const Wall = lazy(() => import('./pages/Wall.jsx'));
 const NotFound = lazy(() => import('./pages/NotFound.jsx'));
 
@@ -38,7 +37,6 @@ export default function App() {
                         <Route path="/projects" element={<Projects />} />
                         <Route path="/projects/:slug" element={<ProjectDetail />} />
                         <Route path="/vibes" element={<Vibes />} />
-                        <Route path="/ai" element={<AiUsage />} />
                         <Route path="/wall" element={<Wall />} />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
