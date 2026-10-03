@@ -41,6 +41,7 @@ Point a Dokploy service at this repo, Traefik routes `rakaiseto.com` to it. `ngi
 
 ## Notes
 
+- Social preview: `public/og-image.jpg` is a static 1200×630 card, referenced from `index.html` (Open Graph + Twitter `summary_large_image`). Per-route title/description/URL are rewritten by `usePageMeta` in `src/lib/seo.js`, so scrapers that run JS see the current page while ones that don't still get the home-page tags. Keep the file under ~300 KB or WhatsApp drops the preview.
 - Theme: dark-only — light mode and the toggle were removed; the shell sets `class="dark"` unconditionally.
 - Cursor & background: custom 8px brand cursor (grows to 24px over links/buttons, squashes on press) and an ambient canvas background — soft color orbs plus drifting dust motes with rare brand/violet accents. The canvas renders a static frame under `prefers-reduced-motion` and pauses while the tab is hidden. Both gate off on coarse pointers for the cursor.
 - Old `/blog/*` URLs intentionally 404 (blog retired in the redesign); the 404 page explains it.
