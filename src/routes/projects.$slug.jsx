@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import Markdown from 'react-markdown';
 import { useCallback, useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, GithubLogo, GlobeHemisphereWest, SquaresFour } from '@phosphor-icons/react';
@@ -9,8 +9,8 @@ import TechChip from '../components/TechChip.jsx';
 import { Reveal, MaskWords } from '../components/Motion.jsx';
 import ProjectModal from '../components/ProjectModal.jsx';
 import { getProject, nextProject, projects } from '../lib/projects.js';
-import { usePageMeta } from '../lib/seo.js';
-import NotFound from './NotFound.jsx';
+import { pageHead } from '../lib/route-meta.js';
+import NotFound from '../components/NotFound.jsx';
 
 function SectionTitle({ children }) {
     return (
@@ -66,7 +66,8 @@ function RailItem({ project, index, current }) {
     return (
         <li className="shrink-0 md:shrink">
             <Link
-                to={`/projects/${project.slug}`}
+                to="/projects/$slug"
+                params={{ slug: project.slug }}
                 aria-current={active ? 'page' : undefined}
                 className={`flex items-baseline gap-2.5 border-l-2 py-1.5 pl-3 transition-colors duration-200 ${
                     active ? 'border-brand-500 bg-brand-500/[0.04]' : 'border-white/10 hover:border-white/40'
@@ -83,9 +84,22 @@ function RailItem({ project, index, current }) {
     );
 }
 
-export default function ProjectDetail() {
-    const { slug } = useParams();
-    const project = getProject(slug);
+export const Route = createFileRoute('/projects/$slug')({
+    loader: ({ params }) => getProject(params.slug) ?? null,
+    head: ({ loaderData, params }) =>
+        pageHead({
+            title: loaderData ? `${loaderData.title} — Rakai Seto Sembodo` : 'Project — Rakai Seto Sembodo',
+            description: loaderData?.summary,
+            path: `/projects/${params.slug}`,
+            ogKey: loaderData ? `projects/${params.slug}` : undefined,
+            ogType: 'article',
+        }),
+    component: ProjectDetail,
+});
+
+function ProjectDetail() {
+    const { slug } = Route.useParams();
+    const project = Route.useLoaderData();
     const { scrollYProgress } = useScroll();
     const scaleX = useSpring(scrollYProgress, { stiffness: 140, damping: 24 });
 
@@ -96,11 +110,8 @@ export default function ProjectDetail() {
     // an open switcher must not survive a route change (back/forward, select)
     useEffect(() => setModalOpen(false), [slug]);
 
-    usePageMeta(project ? `${project.title} — Rakai Seto Sembodo` : 'Project — Rakai Seto Sembodo', project?.summary);
+    if (!project) return <NotFound />;
 
-    if (!project) return <NotFound />;if (!project) return <NotFound />;if (!project) return <NotFound />;
-
-    const index = projects.findIndex((p) => p.slug === project.slug);
     const next = nextProject(project.slug);
 
     const mainProjects = projects.filter((p) => p.category !== 'school');
@@ -254,7 +265,7 @@ export default function ProjectDetail() {
             {/* next project */}
             <nav className="mt-28 border-t pt-10 border-white/10">
                 <Reveal>
-                    <Link to={`/projects/${next.slug}`} className="group flex items-center justify-between gap-6">
+                    <Link to="/projects/$slug" params={{ slug: next.slug }} className="group flex items-center justify-between gap-6">
                         <div>
                             <p className="mb-2 font-mono text-[14px] uppercase tracking-[0.25em] text-zinc-500">next project</p>
                             <span className="text-3xl font-semibold tracking-tight transition-colors group-hover:text-brand-500 md:text-5xl">

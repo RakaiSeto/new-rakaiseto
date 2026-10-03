@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { motion } from 'framer-motion';
 import { ArrowDown, ArrowUpRight, FileText, LinkedinLogo } from '@phosphor-icons/react';
 import BreathingDot from '../components/BreathingDot.jsx';
@@ -9,7 +9,7 @@ import About from '../components/About.jsx';
 import Magnetic from '../components/Magnetic.jsx';
 import { Reveal } from '../components/Motion.jsx';
 import { projects } from '../lib/projects.js';
-import { usePageMeta } from '../lib/seo.js';
+import { pageHead } from '../lib/route-meta.js';
 
 const LOG_ITEMS = [
     'GO · LARAVEL · REACT · NODE.JS · POSTGRESQL · RABBITMQ · REDIS',
@@ -19,12 +19,18 @@ const LOG_ITEMS = [
     'JAKARTA & MALANG, ID · UTC+7',
 ];
 
-export default function Home() {
-    usePageMeta(
-        'Rakai Seto Sembodo — Fullstack Developer',
-        'Fullstack developer in Jakarta. Backend-heavy systems in Go, Laravel, and React that survive production.',
-    );
+export const Route = createFileRoute('/')({
+    head: () =>
+        pageHead({
+            title: 'Rakai Seto Sembodo — Fullstack Developer',
+            description: 'Fullstack developer in Jakarta. Backend-heavy systems in Go, Laravel, and React that survive production.',
+            path: '/',
+            // No ogKey: the homepage keeps its hand-made static card.
+        }),
+    component: Home,
+});
 
+function Home() {
     // Main page previews the works: top three work entries plus the first
     // school assignment, in site order. The full list lives on /projects.
     const preview = [
@@ -36,8 +42,11 @@ export default function Home() {
         <>
             {/* HERO — identity, role, proof strip, actions */}
             <section className="mx-auto grid min-h-[100dvh] max-w-[1400px] items-center gap-8 overflow-x-clip px-5 pt-24 pb-12 md:grid-cols-12 md:gap-8">
+                {/* initial={false} on the hero: it paints straight from the SSR
+                    HTML. Gating it on JS would delay LCP and leave the fold blank
+                    if the bundle fails. Below-fold Reveals keep their entrance. */}
                 <motion.div
-                    initial={{ opacity: 0 }}
+                    initial={false}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
                     className="order-1 md:col-span-8"
@@ -166,7 +175,7 @@ export default function Home() {
 
                 {/* ID card — the image earns its space */}
                 <motion.div
-                    initial={{ opacity: 0 }}
+                    initial={false}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 0.25, ease: 'easeOut' }}
                     className="hidden order-2 justify-center md:col-span-4 md:flex md:justify-end"

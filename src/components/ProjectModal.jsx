@@ -1,5 +1,5 @@
 import { useEffect, useRef } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from '@tanstack/react-router';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, X } from '@phosphor-icons/react';
 
@@ -21,7 +21,8 @@ function Row({ project, index, current, onSelect }) {
     return (
         <motion.li variants={rowVariants}>
             <Link
-                to={`/projects/${project.slug}`}
+                to="/projects/$slug"
+                params={{ slug: project.slug }}
                 onClick={() => onSelect(project.slug)}
                 aria-current={current ? 'page' : undefined}
                 data-slug={project.slug}
@@ -88,7 +89,7 @@ export default function ProjectModal({ mainProjects, schoolProjects, currentSlug
     };
 
     const select = (slug) => {
-        if (slug !== currentSlug) navigate(`/projects/${slug}`);
+        if (slug !== currentSlug) navigate({ to: '/projects/$slug', params: { slug } });
         onClose();
     };
 

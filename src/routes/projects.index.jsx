@@ -1,15 +1,16 @@
-import { Link } from 'react-router-dom';
+import { createFileRoute, Link } from '@tanstack/react-router';
 import { ArrowUpRight } from '@phosphor-icons/react';
 import { Reveal } from '../components/Motion.jsx';
 import { projects } from '../lib/projects.js';
-import { usePageMeta } from '../lib/seo.js';
+import { pageHead } from '../lib/route-meta.js';
 
 // Cell anatomy shared by both sections: title · one-line summary · year +
 // stack. Hairline divider, no box, no index number.
 function ProjectCell({ project }) {
     return (
         <Link
-            to={`/projects/${project.slug}`}
+            to="/projects/$slug"
+            params={{ slug: project.slug }}
             className="group block border-t border-white/10 py-4 transition-colors duration-300 hover:border-brand-500/40 md:py-5"
         >
             <div className="flex items-baseline justify-between gap-4">
@@ -46,9 +47,17 @@ function ProjectCell({ project }) {
 
 // Plain symmetric 2-column grid for both groups — no stagger, no numbers.
 // School assignments sit in their own labeled grid at the bottom.
-export default function Projects() {
-    usePageMeta('Projects — Rakai Seto Sembodo');
+export const Route = createFileRoute('/projects/')({
+    head: () =>
+        pageHead({
+            title: 'Projects — Rakai Seto Sembodo',
+            path: '/projects',
+            ogKey: 'projects',
+        }),
+    component: Projects,
+});
 
+function Projects() {
     const main = projects.filter((p) => p.category !== 'school');
     const school = projects.filter((p) => p.category === 'school');
 

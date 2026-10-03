@@ -16,12 +16,16 @@ export default function Cursor() {
   const layerRef = useRef(null)
   const holderRef = useRef(null)
   const dotRef = useRef(null)
-  const [enabled] = useState(
-    () =>
-      typeof window !== 'undefined' &&
+  // Starts false so the server render and first client render agree — reading
+  // matchMedia during render would flip the tree on hydration. Set after mount.
+  const [enabled, setEnabled] = useState(false)
+
+  useEffect(() => {
+    setEnabled(
       window.matchMedia('(pointer: fine)').matches &&
-      !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
-  )
+        !window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+    )
+  }, [])
 
   useEffect(() => {
     if (!enabled) return

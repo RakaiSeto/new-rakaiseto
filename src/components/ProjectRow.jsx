@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 import { ArrowUpRight } from '@phosphor-icons/react';
 import { Reveal } from './Motion.jsx';
 
@@ -10,7 +10,8 @@ export default function ProjectRow({ project, index }) {
     return (
         <Reveal>
             <Link
-                to={`/projects/${project.slug}`}
+                to="/projects/$slug"
+                params={{ slug: project.slug }}
                 className="group block border-b border-white/10 py-5 transition-colors duration-300 hover:border-brand-500/40 md:py-6"
             >
                 <div className="flex flex-col gap-3 md:grid md:grid-cols-12 md:items-baseline md:gap-x-6">

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from '@tanstack/react-router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, FileText, LinkedinLogo, List, X } from '@phosphor-icons/react';
 
@@ -11,11 +11,12 @@ const NAV_ITEMS = [
 
 const CV_URL = '/CV_RAKAI.pdf';
 
-const linkClass = ({ isActive }) =>
-    `text-[14px] transition-colors hover:text-brand-400 ${isActive ? 'text-brand-400' : 'text-zinc-500'}`;
-
-const menuLinkClass = ({ isActive }) =>
-    `group flex items-baseline gap-5 py-5 transition-colors ${isActive ? 'text-brand-400' : 'text-zinc-200'}`;
+// TanStack's Link concatenates `className` with the active/inactive variant
+// className, so the colour lives only in the variant props — never in both,
+// or two conflicting text-colour utilities end up on the element.
+const linkClass = 'text-[14px] transition-colors hover:text-brand-400';
+const menuLinkClass = 'group flex items-baseline gap-5 py-5 transition-colors';
+const ACTIVE_PROPS = { className: 'text-brand-400' };
 
 // Bottom sheet for <lg. Sits as a sibling of the pill — never inside it (the
 // pill's backdrop-blur creates a containing block that would trap a fixed
@@ -81,7 +82,13 @@ function MenuSheet({ open, onClose }) {
                                     exit={{ opacity: 0, y: 8 }}
                                     transition={{ duration: 0.4, delay: 0.06 + i * 0.06, ease: [0.16, 1, 0.3, 1] }}
                                 >
-                                    <NavLink to={item.to} onClick={onClose} className={menuLinkClass}>
+                                    <Link
+                                        to={item.to}
+                                        onClick={onClose}
+                                        className={menuLinkClass}
+                                        activeProps={ACTIVE_PROPS}
+                                        inactiveProps={{ className: 'text-zinc-200' }}
+                                    >
                                         <span className="font-mono text-[12px] tracking-[0.2em] text-zinc-500 transition-colors group-hover:text-brand-400">
                                             {String(i + 1).padStart(2, '0')}
                                         </span>
@@ -91,7 +98,7 @@ function MenuSheet({ open, onClose }) {
                                             weight="bold"
                                             className="ml-auto self-center text-zinc-600 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-400"
                                         />
-                                    </NavLink>
+                                    </Link>
                                 </motion.div>
                             ))}
                         </nav>
@@ -148,9 +155,15 @@ export default function Nav() {
 
                     <div className="hidden items-center gap-6 lg:flex">
                         {NAV_ITEMS.map((item) => (
-                            <NavLink key={item.to} to={item.to} className={linkClass}>
+                            <Link
+                                key={item.to}
+                                to={item.to}
+                                className={linkClass}
+                                activeProps={ACTIVE_PROPS}
+                                inactiveProps={{ className: 'text-zinc-500' }}
+                            >
                                 {item.label}
-                            </NavLink>
+                            </Link>
                         ))}
                     </div>
 

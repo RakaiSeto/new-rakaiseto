@@ -12,6 +12,14 @@ dist
 dist-ssr
 *.local
 
+# TanStack Router — generated route tree (written by the vite plugin)
+src/routeTree.gen.ts
+.tanstack
+
+# Cloudflare Workers
+.wrangler
+.dev.vars
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json

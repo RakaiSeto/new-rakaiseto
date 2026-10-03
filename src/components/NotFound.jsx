@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { Reveal } from '../components/Motion.jsx';
+import { Link } from '@tanstack/react-router';
+import { Reveal } from './Motion.jsx';
 
 export default function NotFound() {
     return (

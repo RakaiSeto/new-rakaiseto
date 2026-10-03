@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, FileText, LinkedinLogo } from '@phosphor-icons/react';
+import { Link } from '@tanstack/react-router';
+import { ArrowRight, FileText, LinkedinLogo } from '@phosphor-icons/react';
 import Magnetic from './Magnetic.jsx';
 import { MaskWords, Reveal } from './Motion.jsx';
 

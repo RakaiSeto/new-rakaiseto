@@ -48,12 +48,20 @@ const DECOR_VARIANTS = {
 
 // Brick lattice: rows of evenly spaced icons, odd rows offset left by half
 // a step (offsetting RIGHT would push the last icon past the board edge),
-// alternating two sizes, uniform opacity, random rotation (-180..+180 per
-// icon for max variation; positions stay deterministic — only facing is
-// random). Default 6x4 cells (each of 6 variants appears exactly 4x);
+// alternating two sizes, uniform opacity, scattered rotation (-180..+180 per
+// icon; both position and facing are deterministic, so SSR and hydration
+// agree). Default 6x4 cells (each of 6 variants appears exactly 4x);
 // boards with `cols` set (travel, game) use a smaller 4x4 grid.
 const LATTICE = { rows: 4, stepY: 25, sizes: [24, 32], defaultCols: 6 }
 const LATTICE_OPACITY = 0.15
+
+// Stable hash → [-180, 180). The scatter must be identical on the server and
+// the client: Math.random() here gives each render a different value, which
+// React reports as a hydration mismatch.
+function tilt(r, c) {
+  const n = Math.sin(r * 12.9898 + c * 78.233) * 43758.5453
+  return (n - Math.floor(n)) * 360 - 180
+}
 
 export function computeDoodles() {
   const out = {}
@@ -71,7 +79,7 @@ export function computeDoodles() {
           top: r * LATTICE.stepY + LATTICE.stepY / 2,
           size: (r + c) % 2 === 0 ? LATTICE.sizes[0] : LATTICE.sizes[1],
           opacity: LATTICE_OPACITY,
-          rotate: (Math.random() - 0.5) * 360,
+          rotate: tilt(r, c),
         })
       }
     }

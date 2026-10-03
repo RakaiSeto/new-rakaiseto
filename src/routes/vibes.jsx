@@ -3,7 +3,8 @@ import { MusicNotes } from '@phosphor-icons/react';
 import BreathingDot from '../components/BreathingDot.jsx';
 import Magnetic from '../components/Magnetic.jsx';
 import { Reveal, MaskWords } from '../components/Motion.jsx';
-import { usePageMeta } from '../lib/seo.js';
+import { createFileRoute } from '@tanstack/react-router';
+import { pageHead } from '../lib/route-meta.js';
 import { fetchLastfmSnapshot, lastfmConfig, timeAgo } from '../lib/feeds.js';
 
 const PERIOD_TABS = [
@@ -116,8 +117,18 @@ function EmptyState() {
     );
 }
 
-export default function Vibes() {
-    usePageMeta('Vibes — Rakai Seto Sembodo', 'What Rakai is listening to, live from last.fm.');
+export const Route = createFileRoute('/vibes')({
+    head: () =>
+        pageHead({
+            title: 'Vibes — Rakai Seto Sembodo',
+            description: 'What Rakai is listening to, live from last.fm.',
+            path: '/vibes',
+            ogKey: 'vibes',
+        }),
+    component: Vibes,
+});
+
+function Vibes() {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const [period, setPeriod] = useState('1month');

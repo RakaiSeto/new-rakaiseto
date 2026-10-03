@@ -1,10 +1,20 @@
+import { createFileRoute } from '@tanstack/react-router';
 import { Reveal } from '../components/Motion.jsx';
-import { usePageMeta } from '../lib/seo.js';
 import WallCanvas from '../components/WallCanvas.jsx';
+import { pageHead } from '../lib/route-meta.js';
 
-export default function Wall() {
-    usePageMeta('the wall — rakaiseto', 'Pinned by hand — the other side of the resume. Music, sport, travel, games.');
+export const Route = createFileRoute('/wall')({
+    head: () =>
+        pageHead({
+            title: 'the wall — rakaiseto',
+            description: 'Pinned by hand — the other side of the resume. Music, sport, travel, games.',
+            path: '/wall',
+            ogKey: 'wall',
+        }),
+    component: Wall,
+});
 
+function Wall() {
     return (
         <section className="relative min-h-[100dvh] px-5 py-32 md:py-40">
             <div className="mx-auto max-w-[1400px]">
