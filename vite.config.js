@@ -6,6 +6,13 @@ import { ogImages } from './build/og-plugin.js'
 
 export default defineConfig({
   server: { port: 3000 },
+  // The prerender step boots a Vite preview server and fetches every route over
+  // HTTP. Left on its default it binds ::1 and advertises `localhost`, which
+  // fails on runners that cannot reach IPv6 loopback — CI timed out with
+  // ETIMEDOUT ::1 / ECONNREFUSED 127.0.0.1. Pinning the host keeps the bind and
+  // the advertised URL on the same IPv4 address. Only prerendering uses this;
+  // `npm run preview` goes through wrangler.
+  preview: { host: '127.0.0.1' },
   plugins: [
     tailwindcss(),
     tanstackStart({
