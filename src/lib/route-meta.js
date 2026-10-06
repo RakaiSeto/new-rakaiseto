@@ -12,6 +12,16 @@ export const DEFAULT_DESCRIPTION =
 // generated one at /og/<key>.png.
 const STATIC_HOME_CARD = `${SITE_URL}/og-image.jpg`
 
+// Every route that needs a generated card, in the order the build writes them.
+// The build script reads this list and the routes read it back through
+// `ogImageUrl`, so a new page or project cannot ship without a card.
+export const ogKeys = [
+  'projects',
+  'vibes',
+  'wall',
+  ...projects.map((p) => `projects/${p.slug}`),
+]
+
 export function ogImageUrl(key) {
   return key ? `${SITE_URL}/og/${key}.png` : STATIC_HOME_CARD
 }
