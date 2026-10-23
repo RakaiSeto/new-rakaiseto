@@ -31,10 +31,12 @@ export const Route = createFileRoute('/')({
 });
 
 function Home() {
-    // Main page previews the works: top three work entries plus the first
-    // school assignment, in site order. The full list lives on /projects.
+    // Preview is derived, never curated: the top three non-school entries
+    // (work + personal, the same group /projects lists first) plus the first
+    // school assignment, both in site order. Reordering `order` in frontmatter
+    // is the only edit needed to change what shows up here.
     const preview = [
-        ...projects.filter((p) => p.category === 'work').slice(0, 3),
+        ...projects.filter((p) => p.category !== 'school').slice(0, 3),
         ...projects.filter((p) => p.category === 'school').slice(0, 1),
     ];
 

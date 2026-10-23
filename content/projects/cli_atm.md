@@ -1,6 +1,6 @@
 ---
 title: CLI ATM
-order: 3
+order: 4
 year: 2023
 category: school
 summary: "A CLI ATM app made with Java"

@@ -1,6 +1,6 @@
 ---
 title: Rules Management System
-order: 2
+order: 3
 year: 2024
 category: school
 summary: "A web app made to help the organization's disciplinary comittee"

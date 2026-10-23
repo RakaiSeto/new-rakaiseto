@@ -1,13 +1,12 @@
 ---
 title: SIPASTI
-order: 1
+order: 2
 year: 2025
 category: school
 summary: "Information system for reporting and repairing campus infrastructure"
 role: "Fullstack Developer"
 stack: [Laravel, MySQL]
 image: "/images/projects/sipasti/home.png"
-demo: "https://sipasti.rakaiseto.com/"
 repo: "https://github.com/rakaiseto/PBL-SIPASTI"
 ---
 

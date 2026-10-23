@@ -19,7 +19,7 @@ All content is markdown with frontmatter:
 
 - `content/projects/*.md` — one file per case study. Frontmatter (`title`, `order`, `summary`, `role`, `stack`, `image`, `status`, `demo`, `repo`, `mock`) drives the UI; the body is rendered with react-markdown.
 - `content/about.json` — the "now" strip: current roles, employer timeline, education. Edit the JSON, the section updates. Timeline and "other experiences" entries sharing the same `company`/`org` render as one grouped block (name on top, one row per position) — just add a second entry with the same company name.
-- Add a project: drop a new `.md` file in, set `order`. It appears on the home page (if `order <= 3`), the index, gets its own `/projects/:slug` page, and gets its own OG card automatically.
+- Add a project: drop a new `.md` file in, set `order`. It appears on the index, gets its own `/projects/:slug` page, and gets its own OG card automatically. The home page shows the first three non-school entries plus the first school assignment, both in `order`, so nothing there is curated by hand.
 - `mock: true` renders the CSS-drawn POS interface instead of a screenshot.
 
 ## Dev
