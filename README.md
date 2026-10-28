@@ -12,6 +12,7 @@ Personal portfolio for Rakai Seto Sembodo. **TanStack Start prerendered to stati
 - Plus Jakarta Sans + JetBrains Mono, self-hosted via Fontsource
 - Phosphor icons
 - Takumi (Rust) for build-time OG image generation
+- Typst for the CV, compiled to PDF at build time
 
 ## Content
 
@@ -21,6 +22,34 @@ All content is markdown with frontmatter:
 - `content/about.json` — the "now" strip: current roles, employer timeline, education. Edit the JSON, the section updates. Timeline and "other experiences" entries sharing the same `company`/`org` render as one grouped block (name on top, one row per position) — just add a second entry with the same company name.
 - Add a project: drop a new `.md` file in, set `order`. It appears on the index, gets its own `/projects/:slug` page, and gets its own OG card automatically. The home page shows the first three non-school entries plus the first school assignment, both in `order`, so nothing there is curated by hand.
 - `mock: true` renders the CSS-drawn POS interface instead of a screenshot.
+
+## CV
+
+The CV is a **Typst document**, not a checked-in PDF. `content/cv/cv.typ` holds the content (one `#entry(...)` per position, school, or role); `content/cv/template.typ` holds all of the layout — palette, margins, font sizes, spacing — so restyling never means touching the content and vice versa.
+
+`build/typst-plugin.js` compiles it to `/CV_RAKAI.pdf` with `@myriaddreamin/typst-ts-node-compiler`, the same Typst engine as the `typst` CLI:
+
+- `npm run dev` serves it from memory at `/CV_RAKAI.pdf`, recompiled per request — an edit shows up on refresh, and a Typst error comes back as a 500 with the diagnostics in the terminal.
+- `npm run build` writes it to `dist/client/CV_RAKAI.pdf` after the prerender step, then reads it back and fails the build if it is missing or not the bytes the compiler produced.
+
+The prerender step needs one thing known about it: TanStack's link crawler treats every internal `<a href>` as a page, fetching it and writing the response body through `res.text()`. A link to the PDF makes it rewrite the PDF as text at the exact URL the download links point to. So `prerender.filter` in `vite.config.js` skips `.pdf` paths, and the plugin writes the PDF afterwards with `enforce: 'post'`, which makes the compiled bytes the last word on that file.
+
+There is deliberately **no `public/CV_RAKAI.pdf`**: a generated PDF sitting next to a source of truth drifts the moment someone edits one and forgets the other. The download link points at `CV_URL` in `src/lib/route-meta.js`.
+
+The PDF uses **Libertinus Serif**, which ships with Typst, so it renders identically everywhere with no font files in the repo (Typst cannot read the site's woff/woff2 fonts).
+
+To edit the CV, change `content/cv/cv.typ` and run `npm run dev`. To compile it on its own:
+
+```sh
+node --input-type=module -e "
+import { NodeCompiler } from '@myriaddreamin/typst-ts-node-compiler'
+import { writeFileSync } from 'node:fs'
+const c = NodeCompiler.create({ workspace: '.' })
+const r = c.compile({ root: '.', mainFilePath: 'content/cv/cv.typ' })
+if (r.hasError()) console.log(r.takeDiagnostics()?.shortDiagnostics)
+else writeFileSync('/tmp/cv.pdf', c.pdf(r.result))
+"
+```
 
 ## Dev
 

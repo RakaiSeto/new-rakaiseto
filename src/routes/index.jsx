@@ -9,7 +9,7 @@ import About from '../components/About.jsx';
 import Magnetic from '../components/Magnetic.jsx';
 import { Reveal } from '../components/Motion.jsx';
 import { projects } from '../lib/projects.js';
-import { pageHead } from '../lib/route-meta.js';
+import { CV_URL, pageHead } from '../lib/route-meta.js';
 
 const LOG_ITEMS = [
     'GO · LARAVEL · REACT · NODE.JS · POSTGRESQL · RABBITMQ · REDIS',
@@ -142,7 +142,7 @@ function Home() {
                             </Magnetic>
                             <Magnetic className="w-full sm:w-auto">
                                 <a
-                                    href="/CV_RAKAI.pdf"
+                                    href={CV_URL}
                                     className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-3.5 font-mono text-[14px] text-zinc-300 transition-all hover:border-brand-500/60 hover:text-brand-400 active:scale-[0.98] sm:w-auto sm:px-7"
                                 >
                                     <FileText size={16} />

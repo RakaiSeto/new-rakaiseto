@@ -2,8 +2,7 @@ import { Link } from '@tanstack/react-router';
 import { ArrowRight, FileText, LinkedinLogo } from '@phosphor-icons/react';
 import Magnetic from './Magnetic.jsx';
 import { MaskWords, Reveal } from './Motion.jsx';
-
-const CV_URL = '/CV_RAKAI.pdf';
+import { CV_URL } from '../lib/route-meta.js';
 
 export default function Contact() {
     return (

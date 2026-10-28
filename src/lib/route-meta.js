@@ -8,6 +8,11 @@ export const SITE_NAME = 'Rakai Seto Sembodo'
 export const DEFAULT_DESCRIPTION =
   'Rakai Seto Sembodo — fullstack developer in Jakarta. Backend-heavy systems in Go, Laravel, and React that survive production.'
 
+// Where the CV download points. The PDF is not checked in: build/typst-plugin.js
+// compiles content/cv/cv.typ and writes this file into the client output, so
+// this constant and that plugin's CV_OUTPUT have to stay in step.
+export const CV_URL = '/CV_RAKAI.pdf'
+
 // The homepage keeps its hand-made static card. Everything else gets a
 // generated one at /og/<key>.png.
 const STATIC_HOME_CARD = `${SITE_URL}/og-image.jpg`

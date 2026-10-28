@@ -2,14 +2,13 @@ import { useEffect, useRef, useState } from 'react';
 import { Link } from '@tanstack/react-router';
 import { AnimatePresence, motion } from 'framer-motion';
 import { ArrowUpRight, FileText, LinkedinLogo, List, X } from '@phosphor-icons/react';
+import { CV_URL } from '../lib/route-meta.js';
 
 const NAV_ITEMS = [
     { to: '/projects', label: 'Works' },
     { to: '/vibes', label: 'Vibes' },
     { to: '/wall', label: 'The wall' },
 ];
-
-const CV_URL = '/CV_RAKAI.pdf';
 
 // TanStack's Link concatenates `className` with the active/inactive variant
 // className, so the colour lives only in the variant props — never in both,

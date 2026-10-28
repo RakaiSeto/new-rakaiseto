@@ -3,6 +3,7 @@ import { tanstackStart } from '@tanstack/react-start/plugin/vite'
 import viteReact from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import { ogImages } from './build/og-plugin.js'
+import { typstCv } from './build/typst-plugin.js'
 
 export default defineConfig({
   server: { port: 3000 },
@@ -35,9 +36,19 @@ export default defineConfig({
         // asset handler serves the .html form at /projects with a 200; the
         // directory form 307s to /projects/, which would fight our canonical.
         autoSubfolderIndex: false,
+        // The crawler treats every internal <a href> as a page: it fetches the
+        // target and writes the body through `res.text()`. Pointed at the CV,
+        // that mangles the PDF into a corrupt file at the exact URL the
+        // download links point to — and with the PDF written after prerender it
+        // 404s and fails the build instead. Either way the PDF is not a page;
+        // build/typst-plugin.js owns it.
+        filter: (page) => !page.path.endsWith('.pdf'),
       },
     }),
     viteReact(),
+    // Compiles the Typst CV in content/cv/ to /CV_RAKAI.pdf: served live in
+    // dev, written into the client output at build time.
+    typstCv(),
     // Must stay last: it runs after TanStack's prerender so every HTML file
     // exists before it writes the OG cards and checks the homepage.
     ogImages(),
