@@ -50,7 +50,11 @@
   title: "Fullstack Developer Intern",
   org: "PT Intelix Global Crossing",
   when: "Jul 2026 – Present",
-  where: "Jakarta, Indonesia",
+  where: "Malang, Indonesia",
+  points: (
+    [Creating responsive and creative UI for internal support application while implementing backend API and Web Socket], 
+    [Improve and maintain performance across multiple application to ensure good user experience]
+  ),
 )
 
 #entry(
