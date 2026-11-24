@@ -16,7 +16,7 @@ export const Route = createFileRoute('/wall')({
 
 function Wall() {
     return (
-        <section className="relative min-h-[100dvh] px-5 py-32 md:py-40">
+        <section className="relative min-h-[100dvh] px-5 pt-24 pb-32 lg:py-40">
             <div className="mx-auto max-w-[1400px]">
                 <Reveal className="mb-16 md:mb-24">
                     <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.25em] text-zinc-300">the wall</p>

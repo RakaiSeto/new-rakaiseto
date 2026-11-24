@@ -62,7 +62,7 @@ function Projects() {
     const school = projects.filter((p) => p.category === 'school');
 
     return (
-        <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
+        <section className="mx-auto max-w-[1400px] px-5 pt-24 pb-28 lg:pt-36">
             <Reveal className="mb-14">
                 <h1 className="text-4xl font-semibold tracking-tighter md:text-6xl">Every works, told as it is.</h1>
             </Reveal>

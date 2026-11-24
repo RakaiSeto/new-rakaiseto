@@ -155,7 +155,7 @@ function Vibes() {
 
     if (error) {
         return (
-            <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
+            <section className="mx-auto max-w-[1400px] px-5 pt-24 pb-28 lg:pt-36">
                 <p className="font-mono text-[12px] uppercase tracking-[0.25em] text-zinc-400">vibes</p>
                 <h1 className="mt-4 text-4xl font-semibold tracking-tighter md:text-6xl">last.fm said no.</h1>
                 <p className="mt-6 max-w-[52ch] leading-relaxed text-zinc-400">
@@ -175,7 +175,7 @@ function Vibes() {
 
     if (!data) {
         return (
-            <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
+            <section className="mx-auto max-w-[1400px] px-5 pt-24 pb-28 lg:pt-36">
                 <Skeleton className="mb-4 h-3 w-24" />
                 <Skeleton className="mb-10 h-12 w-72" />
                 <div className="grid gap-4 sm:grid-cols-3">
@@ -206,7 +206,7 @@ function Vibes() {
     const history = data.history.slice(0, 20);
 
     return (
-        <section className="mx-auto max-w-[1400px] px-5 pt-36 pb-28">
+        <section className="mx-auto max-w-[1400px] px-5 pt-24 pb-28 lg:pt-36">
             <div className="flex flex-col justify-between gap-8 md:flex-row md:items-end">
                 <div>
                     <p className="mb-4 font-mono text-[12px] uppercase tracking-[0.25em] text-zinc-300">vibes · last.fm</p>

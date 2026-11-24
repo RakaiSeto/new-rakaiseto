@@ -117,7 +117,7 @@ function ProjectDetail() {
     const mainProjects = projects.filter((p) => p.category !== 'school');
     const schoolProjects = projects.filter((p) => p.category === 'school');
     return (
-        <article className="mx-auto max-w-[1400px] px-5 pt-32 pb-24">
+        <article className="mx-auto max-w-[1400px] px-5 pt-24 pb-24 lg:pt-32">
             <motion.div
                 aria-hidden
                 className="fixed inset-x-0 top-0 z-40 h-[2px] origin-left bg-brand-500/80"

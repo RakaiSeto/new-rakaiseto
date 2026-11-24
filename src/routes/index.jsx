@@ -43,7 +43,10 @@ function Home() {
     return (
         <>
             {/* HERO — identity, role, proof strip, actions */}
-            <section className="mx-auto grid min-h-[100dvh] max-w-[1400px] items-center gap-8 overflow-x-clip px-5 pt-24 pb-12 md:grid-cols-12 md:gap-8">
+            {/* below lg the fixed tab bar eats into the viewport, so the hero
+                is only as tall as what's left above it — otherwise its centred
+                CTAs land underneath the bar on short phones. */}
+            <section className="mx-auto grid min-h-[calc(100dvh-5.5rem-env(safe-area-inset-bottom))] max-w-[1400px] items-center gap-8 overflow-x-clip px-5 pt-24 pb-12 md:grid-cols-12 md:gap-8 lg:min-h-[100dvh]">
                 {/* initial={false} on the hero: it paints straight from the SSR
                     HTML. Gating it on JS would delay LCP and leave the fold blank
                     if the bundle fails. Below-fold Reveals keep their entrance. */}
